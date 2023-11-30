@@ -1,0 +1,31 @@
+{
+  "name": "nanoweb",
+  "version": "0.0.1",
+  "description": "Static site generator on Javascript.",
+  "main": "server.js",
+  "dependencies": {
+    "bootstrap": "^5.3.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yaro-rasta/nanoweb.git"
+  },
+  "keywords": [
+    "ssg",
+    "static",
+    "site",
+    "static",
+    "website",
+    "generator"
+  ],
+  "author": "Yaro",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yaro-rasta/nanoweb/issues"
+  },
+  "homepage": "https://github.com/yaro-rasta/nanoweb#readme"
+}
