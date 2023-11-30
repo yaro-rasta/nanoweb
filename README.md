@@ -17,3 +17,4 @@ Static site generator on Javascript.
 ## Achievements.
 1. Prompt engineering learning for coding.
 1. Develop a simple server on Javascript.
+1. Use bootstrap framework in project.
