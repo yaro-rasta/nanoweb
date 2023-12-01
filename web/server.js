@@ -17,7 +17,7 @@ function removeQueryParams(uri) {
 function getDataFile(uri) {
     const decodedUri = decodeURIComponent(uri);
     const parts = removeQueryParams(decodedUri).split('/');
-    let fileName = parts[parts.length - 1];
+    let fileName = parts.slice(1).join('/');
     if ('' === fileName) {
         fileName = 'index';
     }
@@ -29,7 +29,7 @@ function getDataFile(uri) {
 function getTemplateFile(uri) {
     const decodedUri = decodeURIComponent(uri);
     const parts = removeQueryParams(decodedUri).split('/');
-    let fileName = parts[parts.length - 1];
+    let fileName = parts.slice(1).join('/');
     if ('' === fileName) {
         fileName = 'index';
     }
@@ -84,6 +84,10 @@ function getMimeType(fileExtension) {
         '.jpg': 'image/jpeg',
         '.jpeg': 'image/jpeg',
         '.png': 'image/png',
+        '.eot': 'application/vnd.ms-fontobject',
+        '.svg': 'image/svg+xml',
+        '.ttf': 'font/ttf',
+        '.woff': 'font/woff',
         // Add more mime types as needed
     };
 
