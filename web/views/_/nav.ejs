@@ -9,32 +9,64 @@
                 <a class="navbar-brand" href="/">
                     <img src="/img/logo-uk.png" alt="Штаб порятунку спадщини">
                 </a>
-                <a class="partner" href="https://www.maidanmuseum.org/" target="_blank">
-                    <img src="/img/rdm-logo-uk.png" alt="Національний меморіальний комплекс Героїв небесної сотні — музей революції гідності">
-                </a>
-                <a class="partner" href="https://tustan.ua/" target="_blank">
-                    <img src="/img/tustan-logo.png" alt="Тустань">
-                </a>
-                <a class="partner" href="#" target="_blank">
-                    <img src="/img/acure-logo.png" alt="Acure">
-                </a>
+                <div class="d-flex flex-column justify-content-between gap-3">
+                    <div class="d-flex justify-content-between gap-5">
+                        <a class="partner" href="https://www.maidanmuseum.org/" target="_blank">
+                            <img src="/img/rdm-logo-uk.png" alt="Національний меморіальний комплекс Героїв небесної сотні — музей революції гідності">
+                        </a>
+                        <a class="partner" href="https://tustan.ua/" target="_blank">
+                            <img src="/img/tustan-logo.png" alt="Тустань">
+                        </a>
+                        <a class="partner" href="#" target="_blank">
+                            <img src="/img/acure-logo.png" alt="Acure">
+                        </a>
+                    </div>
+                    <div class="d-flex justify-content-between gap-5">
+                        <div class="d-flex flex-column justify-content-center">
+                            <form class="m-0 input-group" role="search">
+                                <input class="form-control" type="search" placeholder="Шукати: Контакти штабу" aria-label="Пошук по сайту">
+                                <button class="btn btn-outline-success" type="submit">
+                                    <span class="icon-search"></span>
+                                    <span class="d-none">Шукати</span>
+                                </button>
+                            </form>
+                        </div>
+                        <div class="hotline">
+                            <h3 class="fs-5 text-uppercase">
+                                <b class="text-nowrap">Гаряча лінія:</b>
+                                <a href="tel:+380670676767" class="text-nowrap"><b>067-067-67-67</b></a>
+                            </h3>
+                            <p class="fs-7 m-0">консультації, допомога, інформування про надзвичайну подію</p>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="d-flex flex-column flex-lg-row flex-wrap gap-3 align-items-center">
-                <ul class="navbar-nav me-auto text-uppercase">
+                <ul class="navbar-nav me-auto align-items-center gap-2">
+                    <% function renderNav(items, level = 0) { %>
+                        <% items.forEach(function(item) { %>
+                            <li class="nav-item<%= 0 === level && item.children ? ' dropdown' : '' %>">
+                                <a
+                                    class="nav-link<%= 0 === level && item.children ? ' dropdown-toggle' : '' %> <%= level < 2 ? 'text-uppercase' : '' %>"
+                                    href="<%= item.href %>"
+                                    <%- 0 === level && item.children ? 'data-bs-toggle="dropdown"' : '' %>
+                                >
+                                    <%= item.title %>
+                                </a>
+                                <% if (item.children) { %>
+                                    <ul class="<%= 0 === level ? 'dropdown-menu' : 'nav' %>">
+                                        <%= renderNav(item.children, level + 1) %>
+                                    </ul>
+                                <% } %>
+                            </li>
+                        <% }); %>
+                    <% } %>
+                    <%= renderNav(global.nav) %>
                     <li class="nav-item">
-                        <a class="nav-link text-nowrap" href="#">Про нас</a>
+                        <a class="btn btn-sm btn-success text-uppercase" href="#">Підтримати</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-nowrap" href="#">Що ми робимо</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-nowrap" href="#">Партнери</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-nowrap" href="#">Новини</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-nowrap text-info" href="#">Підтримати</a>
+                        <a class="btn btn-xs btn-danger text-white text-uppercase" href="#">Повідомити про злочини проти культури</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav me-auto gap-1 locales align-items-center">
@@ -46,20 +78,6 @@
                         <a href="/en/" class="nav-link">Eng</a>
                     </li>
                 </ul>
-                <form class="d-flex m-0" role="search">
-                    <input class="form-control d-lg-none me-2" type="search" placeholder="Контакти штабу" aria-label="Пошук по сайту">
-                    <button class="btn btn-outline-success" type="submit">
-                        <span class="icon-search"></span>
-                        <span class="d-none">Шукати</span>
-                    </button>
-                </form>
-                <div class="hotline">
-                    <h3 class="fs-5 text-uppercase">
-                        <b class="text-nowrap">Гаряча лінія:</b>
-                        <a href="tel:+380670676767" class="text-nowrap"><b>067-067-67-67</b></a>
-                    </h3>
-                    <p class="fs-7 m-0">консультації, допомога, інформування про надзвичайну подію</p>
-                </div>
             </div>
         </div>
     </div>

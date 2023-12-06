@@ -17,6 +17,9 @@
                 color: $navbar-light-active-color !important;
             }
         }
+        ul.dropdown-menu {
+            padding: 1rem;
+        }
     }
     a.partner {
         img {
@@ -43,6 +46,27 @@
             }
             &.active {
                 color: $yellow !important;
+            }
+        }
+    }
+}
+.btn-xs {
+    @extend .btn-sm;
+    font-size: 0.8rem;
+    max-width: 13.5rem;
+}
+
+@include media-breakpoint-up(lg) {
+    .navbar {
+        .navbar-nav {
+            li:hover > .dropdown-menu {
+                display: block;
+            }
+            ul.dropdown-menu {
+                min-width: max-content;
+                ul.nav {
+                    flex-direction: column;
+                }
             }
         }
     }

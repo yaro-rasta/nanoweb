@@ -1,0 +1,15 @@
+map:
+  text: HERITAGE EMERGENCY RESPONSE INITIATIVE
+  img:
+    url: /img/footer-map.png
+    alt: HERITAGE EMERGENCY RESPONSE INITIATIVE
+contacts:
+  facebook:
+    url: https://www.facebook.com/HERI.Ukraine
+    text: FACEBOOK
+  email:
+    url: mailto:saveheritageinua2022@gmail.com
+    text: EMAIL
+  phone:
+    url: tel:+380976023422
+    text: +38 097 602 34 22

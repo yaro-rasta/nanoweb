@@ -1,5 +1,6 @@
 const http = require('node:http');
 const fs = require('node:fs');
+const path = require('node:path');
 const ejs = require('ejs');
 const yaml = require('yaml');
 
@@ -15,8 +16,8 @@ function removeQueryParams(uri) {
 
 // Get data file path based on URI
 function getDataFile(uri) {
-    const decodedUri = decodeURIComponent(uri);
-    const parts = removeQueryParams(decodedUri).split('/');
+    const decodedUri = removeQueryParams(decodeURIComponent(uri)).replace(/\/$/, '');
+    const parts = decodedUri.split('/');
     let fileName = parts.slice(1).join('/');
     if ('' === fileName) {
         fileName = 'index';
@@ -47,24 +48,46 @@ async function loadData(dataFile) {
     return data;
 }
 
+async function loadAllData() {
+    const directory = path.dirname(getDataFile('/_/index'));
+    const files = fs.readdirSync(directory);
+    const data = {};
+
+    for (const file of files) {
+        if (path.extname(file)) {
+            const key = path.basename(file, path.extname(file));
+            data[key] = await loadData(path.join(directory, file));
+        }
+    }
+
+    return data;
+}
 // Render EJS template with data
 async function renderTemplate(templateFile, data) {
+    const templatesRoot = path.join(__dirname, './views');
+
     if (!fs.existsSync(templateFile)) {
         throw new Error(`Template file not found: ${templateFile}`);
     }
-
-    const renderedTemplate = await ejs.renderFile(templateFile, data);
+    const options = { root: templatesRoot };
+    const renderedTemplate = await ejs.renderFile(templateFile, data, options);
     return renderedTemplate;
 }
+
 
 // Handle different routes of request URI and render templates
 const handleRequest = async (req, res) => {
     const uri = removeQueryParams(req.url);
     const dataFile = getDataFile(uri);
-    const templateFile = getTemplateFile(uri);
+    let templateFile = getTemplateFile(uri);
 
     try {
         const data = await loadData(dataFile);
+        const global = await loadAllData();
+        data.global = global;
+        if (!fs.existsSync(templateFile)) {
+            templateFile = getTemplateFile('/_/page-standard');
+        }
         const renderedTemplate = await renderTemplate(templateFile, data);
         res.writeHead(200, { 'Content-Type': 'text/html; charset=UTF-8' });
         res.end(renderedTemplate);
@@ -96,7 +119,7 @@ function getMimeType(fileExtension) {
 
 // Serve static files from `./css/**`, `./js/**`, `./img/**`
 function serveStaticFile(req, res) {
-    const filePath = req.url;
+    const filePath = removeQueryParams(req.url);
     if (filePath.startsWith('/css/') || filePath.startsWith('/js/') || filePath.startsWith('/img/')) {
         const staticFilePath = `${STATIC_PATH}${filePath}`;
         if (fs.existsSync(staticFilePath)) {
