@@ -14,9 +14,11 @@ function removeQueryParams(uri) {
     return uri.split('?')[0];
 }
 
+const decodeUri = uri => removeQueryParams(decodeURIComponent(uri)).replace(/\/$/, '');
+
 // Get data file path based on URI
 function getDataFile(uri) {
-    const decodedUri = removeQueryParams(decodeURIComponent(uri)).replace(/\/$/, '');
+    const decodedUri = decodeUri(uri);
     const parts = decodedUri.split('/');
     let fileName = parts.slice(1).join('/');
     if ('' === fileName) {
@@ -28,7 +30,7 @@ function getDataFile(uri) {
 
 // Get template file path based on URI
 function getTemplateFile(uri) {
-    const decodedUri = decodeURIComponent(uri);
+    const decodedUri = decodeUri(uri);
     const parts = removeQueryParams(decodedUri).split('/');
     let fileName = parts.slice(1).join('/');
     if ('' === fileName) {
@@ -39,24 +41,28 @@ function getTemplateFile(uri) {
 }
 
 // Load data from YAML file
-async function loadData(dataFile) {
+function loadData(dataFile) {
     if (!fs.existsSync(dataFile)) {
         throw new Error(`Data file not found: ${dataFile}`);
     }
 
-    const data = await yaml.parse(fs.readFileSync(dataFile, 'utf8'));
+    const data = yaml.parse(fs.readFileSync(dataFile, 'utf8'));
     return data;
 }
 
-async function loadAllData() {
-    const directory = path.dirname(getDataFile('/_/index'));
+function loadAllData(subdir = '_', asArray = false) {
+    const directory = path.dirname(getDataFile(`/${subdir}/index`));
     const files = fs.readdirSync(directory);
-    const data = {};
+    const data = asArray ? [] : {};
 
     for (const file of files) {
         if (path.extname(file)) {
-            const key = path.basename(file, path.extname(file));
-            data[key] = await loadData(path.join(directory, file));
+            if (asArray) {
+                data.push(loadData(path.join(directory, file)));
+            } else {
+                const key = path.basename(file, path.extname(file));
+                data[key] = loadData(path.join(directory, file));
+            }
         }
     }
 
@@ -74,7 +80,6 @@ async function renderTemplate(templateFile, data) {
     return renderedTemplate;
 }
 
-
 // Handle different routes of request URI and render templates
 const handleRequest = async (req, res) => {
     const uri = removeQueryParams(req.url);
@@ -85,9 +90,11 @@ const handleRequest = async (req, res) => {
         const data = await loadData(dataFile);
         const global = await loadAllData();
         data.global = global;
+        data.loadAllData = loadAllData;
         if (!fs.existsSync(templateFile)) {
             templateFile = getTemplateFile('/_/page-standard');
         }
+        console.log(`Template: ${templateFile}, Data: ${dataFile}`);
         const renderedTemplate = await renderTemplate(templateFile, data);
         res.writeHead(200, { 'Content-Type': 'text/html; charset=UTF-8' });
         res.end(renderedTemplate);
@@ -119,7 +126,7 @@ function getMimeType(fileExtension) {
 
 // Serve static files from `./css/**`, `./js/**`, `./img/**`
 function serveStaticFile(req, res) {
-    const filePath = removeQueryParams(req.url);
+    const filePath = removeQueryParams(decodeUri(req.url));
     if (filePath.startsWith('/css/') || filePath.startsWith('/js/') || filePath.startsWith('/img/')) {
         const staticFilePath = `${STATIC_PATH}${filePath}`;
         if (fs.existsSync(staticFilePath)) {

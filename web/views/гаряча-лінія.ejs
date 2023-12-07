@@ -1,0 +1,27 @@
+<%- include('/_/head'); %>
+
+<body>
+    <%- include('/_/header'); %>
+    <section class="container">
+        <%- include('/_/nav'); %>
+    </section>
+
+    <section class="container">
+        <h1 class="text-center text-uppercase">
+            <%= heading1 || title %>
+        </h1>
+    </section>
+
+    <section class="container">
+        <%- content %>
+
+        <h3 class="fs-5">
+            <b class="text-nowrap">Отримати консультацію можна за тел.</b>
+            <a href="tel:<%= global.hotline.tel %>" class="text-nowrap"><b><%= global.hotline.phone %></b></a>
+        </h3>
+    </section>
+
+    <%- include('/_/footer'); %>
+</body>
+
+<%- include('/_/foot'); %>

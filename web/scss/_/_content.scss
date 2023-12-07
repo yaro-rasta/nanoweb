@@ -1,0 +1,24 @@
+figure.content-img {
+    width: 100%;
+}
+.content-text {
+    flex: 1 1 20rem;
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+@include media-breakpoint-up(md) {
+    .articles {
+        article:nth-child(2n) {
+            figure.content-img {
+                order: 3;
+            }
+            .content-text {
+                order: 2;
+            }
+        }
+    }
+    figure.content-img {
+        min-width: 33%;
+        max-width: 50%; 
+    }
+}

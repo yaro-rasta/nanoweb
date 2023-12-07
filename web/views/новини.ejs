@@ -1,12 +1,102 @@
-<html lang="uk">
-    <head>
-        <meta name="viewport" content="width=device-width,minimum-scale=1.0,initial-scale=1,user-scalable=yes"/>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="/css/index.css">
-    </head>
-    <body>
-        <h1><%= title %></h1>
-    </body>
-</html>
+<%
+const heading1Sure = 'undefined' === typeof heading1 ? title : heading1;
+const news = loadAllData('новини', true);
+news.sort((a, b) => {
+    // Convert date strings to Date objects for comparison
+    const dateA = new Date(a.date.replace(' ', 'T'));
+    const dateB = new Date(b.date.replace(' ', 'T'));
+
+    // For descending order, if dateA is less than dateB, we return 1, else -1
+    return dateA < dateB ? 1 : -1;
+});
+
+// @todo fetch news and split them into own and brand, if { brand } is defined and not empty.
+const ownNews = news.filter(a => !a['brand']);
+const brandNews = news.filter(a => a['brand']);
+%>
+<%- include('/_/head'); %>
+
+<script>
+    window.news = <%- JSON.stringify(news) %>;
+</script>
+
+<body>
+    <%- include('/_/header'); %>
+    <section class="container">
+        <%- include('/_/nav'); %>
+    </section>
+
+    <section class="container">
+        <h1 class="text-center text-uppercase">
+            <%= heading1Sure %>
+        </h1>
+    </section>
+
+    <section class="container">
+        <div class="d-flex flex-wrap gap-3">
+            <% if ('undefined' !== typeof contentImg) { %>
+                <figure class="content-img">
+                    <img class="w-100" src="<%= contentImg %>" alt="<%= heading1Sure %>">
+                </figure>
+            <%} %>
+            <% if ('undefined' !== typeof content) { %>
+            <div class="content-text">
+                <%- content %>
+            </div>
+            <% } %>
+        </div>
+    </section>
+
+    <section class="container">
+        <div class="row">
+            <div class="news col-12 col-lg-6 col-xl-8">
+                <% if (Array.isArray(ownNews)) ownNews.forEach(article => { %>
+                    <article class="d-flex flex-wrap gap-3">
+                        <% if (article['contentImg']) { %>
+                        <figure class="news-img">
+                            <img class="w-100" src="<%= article.contentImg %>" alt="<%= article['heading1'] || article['title'] %>">
+                        </figure>
+                        <% } %>
+                        <div class="news-short">
+                            <h2><%= article['heading1'] || article['title'] %></h2>
+                            <p><span class="badge bg-warning fs-5"><%= article.category %></span></p>
+                            <p><%= article['excerpt'] || "" %></p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span><%= article['date'] || "" %></span>
+                                <a href="#" class="btn btn-outline-primary">читати більше &rsaquo;</a>
+                            </div>
+                        </div>
+                    </article>
+                <% }) %>
+            </div>
+            <div class="brand-news col-12 col-lg-6 col-xl-4">
+                <h3>Новини від партнерів та ЗМІ</h3>
+                <% if (Array.isArray(brandNews)) brandNews.forEach(article => { %>
+                    <article class="d-flex flex-wrap gap-3">
+                        <% if (article['contentImg']) { %>
+                        <figure class="news-img">
+                            <img class="w-100" src="<%= article.contentImg %>" alt="<%= article['heading1'] || article['title'] %>">
+                        </figure>
+                        <% } %>
+                        <div class="news-short">
+                            <div><span class="badge bg-danger fs-5"><%= article.brand %></span></div>
+                            <h2><%= article['heading1'] || article['title'] %></h2>
+                            <p>
+                                <span class="badge bg-warning fs-5"><%= article.category %></span>
+                            </p>
+                            <p><%= article['excerpt'] || "" %></p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span><%= article['date'] || "" %></span>
+                                <a href="#" class="btn btn-outline-primary">читати більше &rsaquo;</a>
+                            </div>
+                        </div>
+                    </article>
+                <% }) %>
+            </div>
+        </div>
+    </section>
+
+    <%- include('/_/footer'); %>
+</body>
+
+<%- include('/_/foot'); %>

@@ -1,3 +1,6 @@
+<%
+const heading1Sure = 'undefined' === typeof heading1 ? title : heading1;
+%>
 <%- include('/_/head'); %>
 
 <body>
@@ -8,13 +11,57 @@
 
     <section class="container">
         <h1 class="text-center text-uppercase">
-            <%= heading1 || title %>
+            <%= heading1Sure %>
         </h1>
     </section>
 
     <section class="container">
-        <%- content %>
+        <div class="d-flex flex-wrap gap-3">
+            <% if ('undefined' !== typeof contentImg) { %>
+                <figure class="content-img">
+                    <img class="w-100" src="<%= contentImg %>" alt="<%= heading1Sure %>">
+                </figure>
+            <%} %>
+            <% if ('undefined' !== typeof content) { %>
+            <div class="content-text">
+                <%- content %>
+            </div>
+            <% } %>
+        </div>
     </section>
+
+    <% if ('undefined' !== typeof articles) { %>
+        <section class="container articles">
+            <% articles.forEach((article, i) => { %>
+                <article class="d-flex flex-wrap gap-3 mb-5">
+                    <figure class="content-img p-0 p-md-3 p-lg-5">
+                        <% function placeImage (src, alt = '') { %>
+                            <img class="w-100" src="<%= src %>" alt="<%= alt %>">
+                        <% } %>
+                        <% if (article['imgUrl']) { %>
+                            <% if (Array.isArray(article.imgUrl)) { %>
+                                <%- include('slides', { id: `slider${i}`, slides: article.imgUrl }); %>
+                            <% } else { %>
+                                <%- placeImage(article.imgUrl, heading1Sure) %>
+                            <% } %>
+                        <% } %>
+                    </figure>
+                    <div class="content-text pt-0 pt-md-3 pt-lg-5">
+                        <h2><%= article.title %></h2>
+
+                        <%- article.content %>
+
+                        <% article['files'] && article.files.forEach(file => { %>
+                            <a class="btn btn-outline-primary d-inline-flex gap-2" href="<%= file.src %>" target="_blank">
+                                <span class="icon-download fs-4"></span>
+                                <span><%= file.alt %></span>
+                            </a>
+                        <% }) %>
+                    </div>
+                </article>
+            <% }); %>
+        </section>
+    <% } %>
 
     <%- include('/_/footer'); %>
 </body>

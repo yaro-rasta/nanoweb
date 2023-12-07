@@ -1,0 +1,21 @@
+.news {
+    figure.news-img {
+        width: 100%;
+    }
+    .news-short {
+        flex: 1 1 20rem;
+        word-break: break-word;
+        overflow-wrap: break-word;
+    }
+    article + article {
+        margin-top: 3rem;
+    }
+}
+@include media-breakpoint-up(md) {
+    .news {
+        figure.news-img {
+            min-width: 33%;
+            max-width: 50%; 
+        }
+    }
+}
