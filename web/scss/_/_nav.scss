@@ -26,11 +26,15 @@
             max-height: 4rem;
         }
     }
+    .dropdown-toggle::after {
+        display: none;
+    }
     .hotline {
         flex: 1 1 15rem;
         padding: .5rem;
         text-align: center;
         border: 2px solid $primary;
+        border-radius: $border-radius;
         background-color: rgba($primary, 0.3);
     }
     .locales {
