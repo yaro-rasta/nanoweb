@@ -1,6 +1,6 @@
 <%
 const heading1Sure = 'undefined' === typeof heading1 ? title : heading1;
-const news = loadAllData('новини', true);
+const news = all['новини'] || [];
 news.sort((a, b) => {
     // Convert date strings to Date objects for comparison
     const dateA = new Date(a.date.replace(' ', 'T'));
@@ -10,15 +10,10 @@ news.sort((a, b) => {
     return dateA < dateB ? 1 : -1;
 });
 
-// @todo fetch news and split them into own and brand, if { brand } is defined and not empty.
 const ownNews = news.filter(a => !a['brand']);
 const brandNews = news.filter(a => a['brand']);
 %>
 <%- include('/_/head'); %>
-
-<script>
-    window.news = <%- JSON.stringify(news) %>;
-</script>
 
 <body>
     <%- include('/_/header'); %>
@@ -63,7 +58,7 @@ const brandNews = news.filter(a => a['brand']);
                             <p><%= article['excerpt'] || "" %></p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <span><%= article['date'] || "" %></span>
-                                <a href="#" class="btn btn-outline-primary">читати більше &rsaquo;</a>
+                                <a href="<%= article['$uri'] %>" class="btn btn-outline-primary">читати більше &rsaquo;</a>
                             </div>
                         </div>
                     </article>

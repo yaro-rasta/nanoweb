@@ -35,6 +35,7 @@ function renderUri(uri, dataDir, viewsDir, debugging = false) {
     data.global  = global;
     data.all     = loadAllCatalogs(dataDir);
     data.query   = getQueryParams(uri);
+    data.$uri    = uri.replace(/\/index$/, '/');
     if (!fs.existsSync(templateFile) && data['$template']) {
         templateFile = getTemplateFile(data['$template'], viewsDir);
     }

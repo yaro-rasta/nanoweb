@@ -154,16 +154,16 @@ function loadCatalog(dataFile, dataDir) {
 // Function to get mime type based on file extension
 function getMimeType(fileExtension) {
     const mimeTypes = {
-        '.html': 'text/html',
-        '.css': 'text/css',
-        '.js': 'application/javascript',
-        '.jpg': 'image/jpeg',
-        '.jpeg': 'image/jpeg',
-        '.png': 'image/png',
-        '.eot': 'application/vnd.ms-fontobject',
-        '.svg': 'image/svg+xml',
-        '.ttf': 'font/ttf',
-        '.woff': 'font/woff',
+        'html': 'text/html',
+        'css': 'text/css',
+        'js': 'application/javascript',
+        'jpg': 'image/jpeg',
+        'jpeg': 'image/jpeg',
+        'png': 'image/png',
+        'eot': 'application/vnd.ms-fontobject',
+        'svg': 'image/svg+xml',
+        'ttf': 'font/ttf',
+        'woff': 'font/woff',
         // Add more mime types as needed
     };
 

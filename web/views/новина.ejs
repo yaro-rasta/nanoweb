@@ -1,0 +1,37 @@
+<%
+const heading1Sure = 'undefined' === typeof heading1 ? title : heading1;
+%>
+<%- include('/_/head'); %>
+
+<body>
+    <%- include('/_/header'); %>
+    <section class="container">
+        <%- include('/_/nav'); %>
+    </section>
+
+    <section class="container">
+        <h1 class="text-center text-uppercase">
+            <%= heading1Sure %>
+        </h1>
+    </section>
+
+    <section class="container">
+        <div class="d-flex flex-wrap gap-3">
+            <h1>Новина</h1>
+            <% if ('undefined' !== typeof contentImg) { %>
+                <figure class="content-img">
+                    <img class="w-100" src="<%= contentImg %>" alt="<%= heading1Sure %>">
+                </figure>
+            <%} %>
+            <% if ('undefined' !== typeof content) { %>
+            <div class="content-text">
+                <%- content %>
+            </div>
+            <% } %>
+        </div>
+    </section>
+
+    <%- include('/_/footer'); %>
+</body>
+
+<%- include('/_/foot'); %>

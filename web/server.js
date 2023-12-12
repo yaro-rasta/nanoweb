@@ -22,7 +22,7 @@ const handleRequest = async (req, res) => {
 };
 
 const server = http.createServer((req, res) => {
-    if (serveStaticFile(req, res, ['/css/', '/js/', '/img/', '/files/'], STATIC_DIR)) {
+    if (serveStaticFile(req, res, ['/favicon.ico', '/css/', '/js/', '/img/', '/files/'], STATIC_DIR)) {
         return;
     }
     handleRequest(req, res);

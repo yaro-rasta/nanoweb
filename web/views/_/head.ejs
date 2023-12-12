@@ -1,4 +1,4 @@
-<html lang="uk">
+<html lang="<%= $lang %>">
     <head>
         <meta name="viewport" content="width=device-width,minimum-scale=1.0,initial-scale=1,user-scalable=yes"/>
         <link rel="icon" type="image/png" href="/img/logo.png">
@@ -8,4 +8,25 @@
         <link rel="stylesheet" href="/css/index.css">
         <link rel="stylesheet" href="/css/font-icons.css">
         <title><%= title %></title>
+
+        <!-- Favicon for various platforms -->
+        <link rel="icon" href="/img/favicon@64.png" sizes="64x64" type="image/png">
+        <link rel="icon" href="/img/favicon@192.png" sizes="192x192" type="image/png">
+
+        <!-- Favicon for iOS devices -->
+        <link rel="apple-touch-icon" href="/img/favicon@300.png" sizes="180x180">
+
+        <% if ('undefined' !== typeof title) { %>
+            <meta property="og:title" content="<%= title %>">
+        <% } %>
+        <% if ('undefined' !== typeof description) { %>
+            <meta property="og:description" content="<%= description %>">
+        <% } %>
+        <% if ('undefined' !== typeof ogImage) { %>
+            <meta property="og:image" content="<%= $host %><%= ogImage %>">
+        <% } %>
+        
+        <meta property="og:url" content="<%= $host %><%= $uri %>">
+        <meta name="twitter:card" content="summary_large_image">
+
     </head>
