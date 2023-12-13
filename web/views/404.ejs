@@ -1,0 +1,21 @@
+<%- include('/_/head'); %>
+
+<body>
+    <%- include('/_/header'); %>
+    <section class="container">
+        <%- include('/_/nav'); %>
+    </section>
+
+    <section class="container text-center" style="height: 30vh; max-width: 45rem">
+        <h1 class="display-3 mb-5 text-center text-uppercase text-danger">
+            <%= heading1 || title %>
+        </h1>
+        <h2>
+            <%= description %>
+        </h2>
+    </section>
+
+    <%- include('/_/footer'); %>
+</body>
+
+<%- include('/_/foot'); %>

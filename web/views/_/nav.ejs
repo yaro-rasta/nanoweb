@@ -23,13 +23,18 @@
                     </div>
                     <div class="d-flex justify-content-between gap-5">
                         <ul class="navbar-nav me-auto gap-1 locales align-items-center">
-                            <li class="nav-item">
-                                <a href="/" class="nav-link active">Укр</a>
-                            </li>
-                            <li>|</li>
-                            <li class="nav-item">
-                                <a href="/en/" class="nav-link">Eng</a>
-                            </li>
+                            <% global.langs.forEach((l, i) => { %>
+                                <li class="nav-item">
+                                    <% if (l.code === $lang) { %>
+                                        <span class="nav-link active"><%= l.title %></span>
+                                    <% } else { %>
+                                        <a href="<%= $alternates[l.code] || l.url %>" class="nav-link"><%= l.title %></a>
+                                    <% } %>
+                                </li>
+                                <% if (i < global.langs.length - 1) { %>
+                                    <li>|</li>
+                                <% } %>
+                            <% }) %>
                         </ul>
                         <div class="d-flex flex-column justify-content-center">
                             <form class="m-0 input-group input-group-sm" role="search">

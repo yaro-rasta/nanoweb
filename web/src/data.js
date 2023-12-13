@@ -3,6 +3,8 @@ const path = require('node:path');
 const yaml = require('yaml');
 const { decodeUri, removeQueryParams } = require('./url');
 
+let alternatesOriginal;
+
 // Get data file path based on URI
 function getDataFile(uri, dataDir) {
     const decodedUri = decodeUri(uri).replace(/.html$/, '');
@@ -10,6 +12,9 @@ function getDataFile(uri, dataDir) {
     let fileName = parts.slice(1).join('/');
     if ('' === fileName) {
         fileName = 'index';
+    }
+    if ('/' === fileName.slice(-1)) {
+        fileName += 'index';
     }
     const dataFile = `${dataDir}/${fileName}.yaml`;
     return dataFile;
@@ -25,9 +30,9 @@ function loadData(dataFile) {
     return data;
 }
 
-function loadAllData(dataPath, subdir = '_', asArray = false) {
+function loadAllData(dataPath, subdir = '_', asArray = false, fullKeys = false, softError = false) {
     // Use findAllDataFiles to recursively find all data files
-    const allFiles = findAllDataFiles(dataPath, subdir);
+    const allFiles = findAllDataFiles(dataPath, subdir, softError);
     const data = asArray ? [] : {};
 
     for (const file of allFiles) {
@@ -38,11 +43,71 @@ function loadAllData(dataPath, subdir = '_', asArray = false) {
         if (asArray) {
             data.push(fileData);
         } else {
-            const key = path.basename(file, path.extname(file));
+            let key;
+            if (fullKeys) {
+                key = path.relative(dataPath, file).slice(0, - path.extname(file).length).replace(/^\.+/, '');
+            } else {
+                key = path.basename(file, path.extname(file));
+            }
             data[key] = fileData;
         }
     }
     return data;
+}
+
+function getAlternatesOriginal(dataPath, langs) {
+    if (alternatesOriginal) return alternatesOriginal;
+    let orig = {};
+    langs.slice(1).forEach(l => {
+        const pages = loadAllData(dataPath, l.code, false, true);
+        Object.entries(pages).forEach(([u, p]) => {
+            const fullUri = `${u}.html`;
+            if (p['$refer']) {
+                const dataFile = getDataFile(p['$refer'], dataPath);
+                try {
+                    fs.statSync(dataFile);
+                } catch (err) {
+                    throw `Reference $refer ${p['$refer']} not found in data: ${u}`;
+                }
+                if ('undefined' === typeof orig[p['$refer']]) orig[p['$refer']] = {};
+                orig[p['$refer']][l.code] = fullUri;
+            }
+        });
+    });
+    alternatesOriginal = orig;
+    return alternatesOriginal;
+}
+
+function loadAlternates(uri, dataPath, langs) {
+    const url = decodeUri(uri);
+    if (!langs.length) return [];
+    const mainLang = langs[0].code;
+    let alts = {};
+    const orig = getAlternatesOriginal(dataPath, langs);
+    let stop = false;
+    let found = false;
+    Object.entries(orig).forEach(([origUri, alt]) => {
+        if (stop) return;
+        if (origUri === url) {
+            alts = alt;
+            found = true;
+            return;
+        }
+        Object.entries(alt).forEach(([l, u]) => {
+            if (stop) return;
+            if (u === url) {
+                alts[mainLang] = origUri;
+                stop = true;
+            }
+        })
+    });
+    if (!found && alts[mainLang]) Object.entries(orig[alts[mainLang]]).forEach(([l, u]) => {
+        if (u !== url) {
+            alts[l] = u;
+        }
+    });
+
+    return alts;
 }
 
 /**
@@ -51,7 +116,7 @@ function loadAllData(dataPath, subdir = '_', asArray = false) {
  * @param {*} subdir 
  * @returns files in array.
  */
-function findAllDataFiles(dataPath, subdir = '_') {
+function findAllDataFiles(dataPath, subdir = '_', softError = false) {
     const directory = path.join(dataPath, subdir);
     let allFiles = [];
 
@@ -73,6 +138,7 @@ function findAllDataFiles(dataPath, subdir = '_') {
         }
     };
 
+    if (softError && !fs.existsSync(directory)) return allFiles;
     processDirectory(directory);
     return allFiles;
 }
@@ -117,13 +183,6 @@ function loadAllCatalogs(dataPath) {
     return catalogs;
 }
 
-// @todo check all the subfolders in the path of dataDir but not upper than dataDir,
-// if _.yaml file is found read its data by loadData(), merge with the _.yaml recursively if existed and return.
-// by default return {}.
-// for the path /data/новини/2022/20221130-Тест.yaml, reads:
-// - data/_.yaml (if exists)
-// - data/новини/_.yaml (if exists)
-// - data/новини/2022/_.yaml (if exists)
 function loadCatalog(dataFile, dataDir) {
     let catalogData = {};
     let currentDir = path.dirname(dataFile);
@@ -194,6 +253,41 @@ function serveStaticFile(req, res, staticSlugs = [], staticPath = './public/') {
     return true;
 }
 
+function deepMerge(target, source) {
+    // Create a deep copy of the target
+    let newTarget = JSON.parse(JSON.stringify(target));
+
+    for (const key in source) {
+        if (source.hasOwnProperty(key)) {
+            if (source[key] && typeof source[key] === 'object') {
+                if (Array.isArray(source[key])) {
+                    // Replace with a copy of the array
+                    newTarget[key] = source[key].slice();
+                } else {
+                    // Perform a deep merge on a copy of the object
+                    newTarget[key] = newTarget[key] || {};
+                    newTarget[key] = deepMerge(newTarget[key], source[key]);
+                }
+            } else {
+                newTarget[key] = source[key];
+            }
+        }
+    }
+    return newTarget;
+}
+
+function detectLang(uri, langs = []) {
+    let lang;
+    const slugs = uri.split('/');
+    if (slugs[1] && langs && langs.map(l => l.code).indexOf(slugs[1]) > -1) {
+        lang = slugs[1];
+    }
+    if (!lang && langs && langs.length) {
+        lang = langs[0].code;
+    }
+    return lang;
+}
+
 module.exports = {
     removeQueryParams,
     decodeUri,
@@ -202,6 +296,9 @@ module.exports = {
     loadData,
     loadAllData,
     loadAllCatalogs,
+    loadAlternates,
     getMimeType,
-    serveStaticFile
+    serveStaticFile,
+    deepMerge,
+    detectLang
 };

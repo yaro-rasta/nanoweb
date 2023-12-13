@@ -1,0 +1,39 @@
+- title: About Us
+  href: "#"
+  children:
+    - title: Mission
+      href: /en/mission.html
+    - title: History
+      href: /en/history.html
+    - title: Team
+      href: /en/team.html
+- title: What We Do
+  href: "#"
+  children:
+    - title: Projects
+      href: /en/projects.html
+    - title: Help
+      href: /en/help.html
+      children:
+        - title: Solidarity Scholarship
+          href: /en/solidarity-scholarship.html
+        - title: Packaging and Rescue Materials
+          href: /en/packaging-and-rescue-materials.html
+        - title: Hotline
+          href: /en/hotline.html
+    - title: Documentation
+      href: /en/documentation.html
+    - title: Useful Materials
+      href: /en/useful-materials.html
+    - title: War Museification
+      href: /en/war-museification.html
+    - title: Reports
+      href: /en/reports.html
+    - title: Rescue Teams
+      href: /en/rescue-teams.html
+    - title: Training and Exhibition Activities
+      href: "#"
+- title: Partners
+  href: /en/partners.html
+- title: News
+  href: /en/news.html

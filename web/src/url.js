@@ -1,5 +1,5 @@
 const removeQueryParams = uri => uri.split('?')[0];
-const decodeUri = uri => removeQueryParams(decodeURIComponent(uri)).replace(/\/$/, '');
+const decodeUri = uri => removeQueryParams(decodeURIComponent(uri));
 function getQueryParams(url) {
     const queryParams = {};
     const queryStringIndex = url.indexOf('?');
