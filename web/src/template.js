@@ -46,6 +46,9 @@ function renderUri(uri, dataDir, viewsDir, debugging = false) {
     data.$alternates = loadAlternates(data.$uri, dataDir, global.langs);
     data.all     = loadAllCatalogs(dataDir);
     data.query   = getQueryParams(uri);
+
+    const timestamp = Date.now();
+    data.v       = timestamp.toString(36);
     if (data['$refer']) {
         const dataFileOrig = getDataFile(data['$refer'], dataDir);
         const origData = loadData(dataFileOrig);

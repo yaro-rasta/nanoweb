@@ -6,7 +6,7 @@
         </button>
         <div class="collapse navbar-collapse flex-column gap-3" id="mainNav">
             <div class="d-flex gap-5 w-100 justify-content-between">
-                <a class="navbar-brand" href="/">
+                <a class="navbar-brand" href="<%= global.langs.filter(l => l.code == $lang)[0].url %>">
                     <img src="/img/logo-<%= $lang %>.png" alt="Штаб порятунку спадщини">
                 </a>
                 <div class="d-flex flex-column justify-content-between gap-3 mt-3">
