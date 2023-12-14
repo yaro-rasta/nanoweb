@@ -1,16 +1,23 @@
 <nav class="navbar navbar-expand-lg py-5">
-    <div class="w-100">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
-            aria-controls="mainNav" aria-expanded="false" aria-label="Відкрити/сховати меню">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    <div class="w-100 d-flex flex-wrap align-items-center gap-3">
+        <div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+                aria-controls="mainNav" aria-expanded="false" aria-label="<%= $l['toggleNav'] || 'Відкрити/сховати меню' %>">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        <div class="d-lg-none" style="flex: 1 1 0">
+            <a class="navbar-brand" href="<%= global.langs.filter(l => l.code == $lang)[0].url %>">
+                <img src="/img/logo-<%= $lang %>.png" alt="<%= $l['logoTitle'] || 'Штаб порятунку спадщини' %>">
+            </a>
+        </div>
         <div class="collapse navbar-collapse flex-column gap-3" id="mainNav">
-            <div class="d-flex gap-5 w-100 justify-content-between">
-                <a class="navbar-brand" href="<%= global.langs.filter(l => l.code == $lang)[0].url %>">
-                    <img src="/img/logo-<%= $lang %>.png" alt="Штаб порятунку спадщини">
+            <div class="d-flex gap-5 w-100 justify-content-between order-2 order-lg-1">
+                <a class="navbar-brand d-none d-lg-inline" href="<%= global.langs.filter(l => l.code == $lang)[0].url %>">
+                    <img src="/img/logo-<%= $lang %>.png" alt="<%= $l['logoTitle'] || 'Штаб порятунку спадщини' %>">
                 </a>
-                <div class="d-flex flex-column justify-content-between gap-3 mt-3">
-                    <div class="d-flex justify-content-between gap-5">
+                <div class="d-flex flex-column justify-content-between gap-5 mt-3">
+                    <div class="d-flex flex-wrap justify-content-center justify-content-lg-between gap-5 order-2 order-lg-1">
                         <a class="partner" href="https://www.facebook.com/HERI.Ukraine" target="_blank">
                             <img src="/img/acure-logo-<%= $lang %>.png" alt="Acure">
                         </a>
@@ -18,14 +25,14 @@
                             <img src="/img/hemo-logo.png" alt="HEMO">
                         </a>
                     </div>
-                    <div class="d-flex justify-content-between gap-5">
-                        <ul class="navbar-nav me-auto gap-1 locales align-items-center">
+                    <div class="d-flex flex-column flex-lg-row flex-wrap align-items-center justify-content-between gap-2 order-1 order-lg-2">
+                        <ul class="list-unstyled mb-0 d-flex gap-2 locales align-items-center">
                             <% global.langs.forEach((l, i) => { %>
                                 <li class="nav-item">
                                     <% if (l.code === $lang) { %>
-                                        <span class="nav-link active"><%= l.title %></span>
+                                        <span class="nav-link p-3 active"><%= l.title %></span>
                                     <% } else { %>
-                                        <a href="<%= $alternates[l.code] || l.url %>" class="nav-link"><%= l.title %></a>
+                                        <a href="<%= $alternates[l.code] || l.url %>" class="nav-link p-3"><%= l.title %></a>
                                     <% } %>
                                 </li>
                                 <% if (i < global.langs.length - 1) { %>
@@ -52,8 +59,8 @@
                     </div>
                 </div>
             </div>
-            <div class="w-100 d-flex flex-column flex-lg-row flex-wrap gap-3 align-items-center">
-                <ul class="navbar-nav me-auto align-items-center gap-2">
+            <div class="w-100 d-flex flex-column flex-lg-row flex-wrap gap-3 align-items-center order-1 order-lg-2">
+                <ul class="navbar-nav me-lg-auto align-items-center gap-2">
                     <% function renderNav(items, level = 0) { %>
                         <% items.forEach(function(item) { %>
                             <li class="nav-item<%= 0 === level && item.children ? ' dropdown' : '' %>">
@@ -74,7 +81,7 @@
                     <% } %>
                     <%= renderNav(global.nav) %>
                 </ul>
-                <div>
+                <div class="d-flex flex-wrap align-items-center justify-content-center gap-3">
                     <a class="btn btn-sm bg-black text-white text-uppercase" href="#">
                         <%= $l['supportBtn'] || 'Підтримати' %>
                     </a>

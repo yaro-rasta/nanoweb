@@ -28,6 +28,8 @@
         <% } %>
         <% if ('undefined' !== typeof ogImage) { %>
             <meta property="og:image" content="<%= $host %><%= ogImage %>">
+        <% } else { %>
+            <meta property="og:image" content="<%= $host %>/img/logo-<%= $lang %>.png">
         <% } %>
         
         <meta property="og:url" content="<%= $host %><%= $uri %>">

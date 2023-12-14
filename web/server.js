@@ -24,7 +24,9 @@ const handleRequest = async (req, res) => {
         const global = loadAllData(DATA_DIR);
         const lang = detectLang(req.url, global['langs']);
         let uri = '/404.html';
-        if (lang) uri = `/${lang}${uri}`;
+        if (lang && global['langs'] && global['langs'][0].code !== lang) {
+            uri = `/${lang}${uri}`;
+        }
         const html = await renderUri(uri, DATA_DIR, VIEWS_DIR, true);
         res.writeHead(404, { 'Content-Type': 'text/html; charset=UTF-8' });
         res.end(html);
