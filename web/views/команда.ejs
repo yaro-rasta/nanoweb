@@ -1,0 +1,40 @@
+<%- include('/_/head'); %>
+
+<body>
+    <%- include('/_/header'); %>
+    <section class="container">
+        <%- include('/_/nav'); %>
+    </section>
+
+    <section class="container">
+        <h1 class="text-center text-uppercase">
+            <%= heading1 || title %>
+        </h1>
+        <% if ('undefined' !== typeof content) { %>
+        <div>
+            <%- content %>
+        </div>
+        <% } %>
+    </section>
+
+    <section class="container team py-5">
+        <% team.forEach(person => { %>
+            <article>
+                <img src="<%= person.image %>" alt="<%= person.name %>">
+                <div>
+                    <h2><%= person.name %></h2>
+                    <p><%= person.text %></p>
+                    <% if (person.url) { %>
+                    <a href="<%= person.url %>" target="_blank" class="btn btn-outline-primary">
+                        <%= $l.linkToFacebook %>
+                    </a>
+                    <% } %>
+                </div>
+            </article>
+        <% }) %>
+    </section>
+
+    <%- include('/_/footer'); %>
+</body>
+
+<%- include('/_/foot'); %>

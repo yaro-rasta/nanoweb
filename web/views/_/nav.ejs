@@ -35,19 +35,19 @@
                         </ul>
                         <div class="d-flex flex-column justify-content-center">
                             <form class="m-0 input-group input-group-sm" role="search">
-                                <input class="form-control" type="search" placeholder="Шукати: Контакти штабу" aria-label="Пошук по сайту">
+                                <input class="form-control" type="search" placeholder="<%= $l['searchInputPlaceholder'] || 'Шукати: Контакти штабу' %>" aria-label="<%= $l['searchInputLabel'] || 'Пошук по сайту' %>">
                                 <button class="btn btn-outline-secondary" type="submit">
                                     <span class="icon-search fs-4"></span>
-                                    <span class="d-none">Шукати</span>
+                                    <span class="d-none"><%= $l['searchBtn'] || 'Шукати' %></span>
                                 </button>
                             </form>
                         </div>
                         <div class="hotline d-none">
                             <p class="mb-0 fs-5 text-uppercase">
-                                <b class="text-nowrap">Гаряча лінія:</b>
+                                <b class="text-nowrap"><%= $l['hotline'] || 'Гаряча лінія' %>:</b>
                                 <a href="tel:<%= global.hotline.tel %>" class="text-nowrap text-danger"><b><%= global.hotline.phone %></b></a>
                             </p>
-                            <p class="fs-7 m-0">консультації, допомога, інформування про надзвичайну подію</p>
+                            <p class="fs-7 m-0"><%= $l['hotlineText'] || 'консультації, допомога, інформування про надзвичайну подію' %></p>
                         </div>
                     </div>
                 </div>
@@ -75,8 +75,12 @@
                     <%= renderNav(global.nav) %>
                 </ul>
                 <div>
-                    <a class="btn btn-sm bg-black text-white text-uppercase" href="#">Підтримати</a>
-                    <a class="btn btn-sm btn-danger text-white text-uppercase" href="#">Реєстр атакованої спадщини</a>
+                    <a class="btn btn-sm bg-black text-white text-uppercase" href="#">
+                        <%= $l['supportBtn'] || 'Підтримати' %>
+                    </a>
+                    <a class="btn btn-sm btn-danger text-white text-uppercase" href="#">
+                        <%= $l['registerOfAttackedHeritageBtn'] || 'Реєстр атакованої спадщини' %>
+                    </a>
                 </div>
             </div>
         </div>

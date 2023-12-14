@@ -1,0 +1,47 @@
+<%- include('/_/head'); %>
+
+<body>
+    <%- include('/_/header'); %>
+    <section class="container">
+        <%- include('/_/nav'); %>
+    </section>
+
+    <section class="container">
+        <h1 class="text-center text-uppercase">
+            <%= heading1 || title %>
+        </h1>
+        <% if ('undefined' !== typeof content) { %>
+        <div class="content-text mx-auto">
+            <%- content %>
+        </div>
+        <% } %>
+    </section>
+
+    <section class="container content-text partners my-0 px-0 py-5">
+        <% partners.forEach(group => { %>
+            <article>
+                <h2><%= group.group %></h2>
+                <ul>
+                    <% group.list.forEach(partner => { %>
+                        <li>
+                            <% if (partner['url']) { %>
+                                <a href="<%= partner.url %>" target="_blank">
+                                    <% if (partner['logo']) { %>
+                                        <img src="<%= partner.logo %>" alt="<%= partner.title %>">
+                                    <% } %>
+                                    <span><%= partner.title %></span>
+                                </a>
+                            <% } else { %>
+                                <%= partner.title %>
+                            <% } %>
+                        </li>
+                    <% }) %>
+                </ul>
+            </article>
+        <% }) %>
+    </section>
+
+    <%- include('/_/footer'); %>
+</body>
+
+<%- include('/_/foot'); %>

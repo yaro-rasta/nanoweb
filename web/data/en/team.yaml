@@ -1,0 +1,36 @@
+$refer: /команда.html
+
+title: Team – Heritage Rescue Headquarters
+heading1: Team
+content: The work also involves the <a href="https://www.heritage.in.ua/" target="_blank">HEMO team</a>, museum professionals, experts, volunteers in various areas – from communication and consulting to unloading wagons and trucks.
+
+team:
+  - image: /img/team/Ihor-Poshivailo.jpg
+    name: "Ihor Poshivailo"
+    text: "Coordinator of the Headquarters (Kyiv), provision of assistance from foreign partners, assessment of needs, losses, and risks, connections with international institutions, organizations, donors, media, methodical projects for museum professionals, field expeditions, educational programs, processes of museification"
+    url: "https://www.facebook.com/ihor.poshyvailo"
+
+  - image: /img/team/Dmitro-Tsvitnenko.jpg
+    name: "Dmytro Tsvitnenko"
+    text: "Head of the Cultural Resilience Agency (ACURE), legal support"
+    url: "https://www.facebook.com/dmytro.tsvitnenko"
+
+  - image: /img/team/Olha-Salo.jpg
+    name: "Olha Salo"
+    text: "fulfilling the needs of museums, logistics, forming a rapid response network, publishing projects, coordinator of the warehouse in Kyiv"
+    url: "https://www.facebook.com/olha.salo"
+
+  - image: /img/team/Bohdan-Poshivailo.jpg
+    name: "Bohdan Poshivailo"
+    text: "photo and video documentation"
+    url: "https://www.facebook.com/bohdan.poshyvailo"
+
+  - image: /img/team/Kseniia-Dvornikova.jpg
+    name: "Kseniia Dvornikova"
+    text: "media relations, public relations"
+    url: "https://www.facebook.com/ksdvornikova"
+
+  - image: /img/team/Karina-Hritsenko.jpg
+    name: "Karina Hritsenko"
+    text: "accounting support"
+    url: null

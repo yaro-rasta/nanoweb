@@ -1,0 +1,150 @@
+$template: /партнери
+
+title: Партнери – Штаб порятунку спадщини
+heading1: Партнери
+content: |
+    <p>Системна співпраця з волонтерськими ініціативами, організаціями та урядами в Україні й за кордоном, насамперед із тими, які працюють у сфері допомоги культурним інституціям та реагування на виклики культурній спадщині, сприяє кращій координації зусиль та системнішому аналізу ситуації щодо загроз і потреб, цільовому наданню допомоги та економії ресурсів на складування й перевезення.</p>
+    <p>Основні напрями співпраці: обмін інформацією з міжнародними організаціями, культурними закладами та фахівцями сфери культурної спадщини щодо ситуації, загроз і потреб, координація в наданні матеріальної допомоги культурним інституціям, зокрема в підборі необхідних матеріалів та в доставці їх, експертні консультації і тренінги. Окремим напрямом партнерства є організація польових експедицій із фіксації ушкоджень та втрат об’єктів культурної спадщини, документування злочинів рф проти культури, підготовка до раннього відновлення й відбудови, промоція української культури та адвокація допомоги.</p>
+    <p>Із часу свого заснування Штаб співпрацював або співпрацює з такими урядовими й неурядовими інституціями, організаціями та ініціативами:</p>
+
+partners:
+  - group: Українські партнери
+    list:
+      - title: Міністерство культури та інформаційної політики України
+        logo: /img/partners/mcip.gov.ua.svg
+        url: https://mcip.gov.ua/
+      - title: Український інститут національної пам’яті
+        logo: https://uinp.gov.ua/storage/app/public/images/1/image/1/max/WtdB01537714749IzC1e.png
+        url: https://uinp.gov.ua/
+      - title: Центр порятунку культурної спадщини (Львів)
+        logo: https://scontent.flwo3-1.fna.fbcdn.net/v/t39.30808-1/321251056_8496773023698358_2271139051579729411_n.jpg?stp=dst-jpg_s480x480&_nc_cat=105&ccb=1-7&_nc_sid=596444&_nc_ohc=3nFXFdUgT3sAX8G8lid&_nc_ht=scontent.flwo3-1.fna&oh=00_AfB0CD5svvBTOJDHI4saCbIOL-oTgRQBuov3qHZ8lzh21g&oe=65800AB8
+        url: https://www.facebook.com/profile.php?id=100081325312579&locale=vi_VN
+      - title: Музейний кризовий центр (Львів)
+        logo: https://scontent.flwo3-1.fna.fbcdn.net/v/t39.30808-1/275446876_105882615392584_8753925617474549901_n.jpg?stp=dst-jpg_p480x480&_nc_cat=104&ccb=1-7&_nc_sid=596444&_nc_ohc=T3EsSXbxz_0AX_2Szmk&_nc_ht=scontent.flwo3-1.fna&oh=00_AfA5KIO9QFwCY9wTMQ36xLBscBdwiJBxdT7Os8w3vMDk0g&oe=658065AF
+        url: https://www.facebook.com/p/%D0%9C%D1%83%D0%B7%D0%B5%D0%B9%D0%BD%D0%B8%D0%B9-%D0%BA%D1%80%D0%B8%D0%B7%D0%BE%D0%B2%D0%B8%D0%B9-%D1%86%D0%B5%D0%BD%D1%82%D1%80Museum-Crisis-Center-100083180718086/?paipv=0&eav=AfZH3UWq1U4fC4t9l_5Su1376Azz_DFN7AeL745h3GbFy1CBEqV3mDyScJ_zk2pfxAg&_rdr
+      - title: Західноукраїнська спілка музеїв. Волонтерська ініціатива «Львівський лицар»
+        logo: https://scontent.flwo3-1.fna.fbcdn.net/v/t39.30808-1/307449212_466399392180233_6366662668357579351_n.jpg?stp=dst-jpg_p480x480&_nc_cat=102&ccb=1-7&_nc_sid=596444&_nc_ohc=2Jl76XtPXPQAX_w3K-_&_nc_ht=scontent.flwo3-1.fna&oh=00_AfCMiPP6FUGAFYG82xYc0w57CoJL8eYawrXN4j20Tub-HQ&oe=657FCB9F
+        url: https://www.facebook.com/lvivskyjlycar/?locale=uk_UA
+      - title: Українське товариство охорони пам’яток історії та культури. Український комітет ІСОМ
+        logo: https://heritage.lviv.ua/wp-content/themes/galychyna/images/logo.png
+        url: https://heritage.lviv.ua/
+      - title: Український комітет ІСОМОS
+        logo: null
+        url: null
+      - title: Український координатор ICCROM
+        logo: null
+        url: null
+      - title: Українське Фулбрайтівське коло
+        logo: null
+        url: null
+      - title: Український центр розвитку музейної справи
+        logo: null
+        url: null
+      - title: Національний заповідник «Києво-Печерська лавра»
+        logo: null
+        url: null
+      - title: Державний природознавчий музей Національної академії наук України
+        logo: null
+        url: null
+      - title: Національний центр народної культури «Музей Івана Гончара»
+        logo: null
+        url: null
+      - title: Леонід Марущак – індивідуальна ініціатива з допомоги музеям Східної та Південної України
+        logo: null
+        url: null
+      - title: ГО «Народна самооборона Львівщини»
+        logo: null
+        url: null
+      - title: Волонтерський штаб Студентського братства Львівщини
+        logo: null
+        url: null
+      - title: Креативна агенція «Між вухами»
+        logo: null
+        url: null
+      - title: Альянс громадського здоров’я
+        logo: null
+        url: null
+      - title: ГО «Спілка учасників та волонтерів АТО»
+        logo: null
+        url: null
+      - title: Транспортна компанія «Сармат»
+        logo: null
+        url: null
+      - title: Інститут геоінформаційних систем
+        logo: null
+        url: null
+      - title: Кафедра архітектури та реставрації Національного університету «Львівська політехніка»
+        logo: null
+        url: null
+      - title: Компанія «Skeiron» – оцифрування культурної спадщини
+        logo: null
+        url: null
+
+  - group: Закордонні партнери
+    list:
+      - title: Організація Об’єднаних Націй з питань освіти, науки і культури (UNESCO)
+        logo: null
+        url: null
+      - title: Міжнародний центр з дослідження, збереження та реставрації культурних цінностей (ICCROM)
+        logo: null
+        url: null
+      - title: Міжнародна рада музеїв (ІCOM)
+        logo: null
+        url: null
+      - title: Міжнародна рада з охорони пам’яток та історичних місць (ІСОМОS)
+        logo: null
+        url: null
+      - title: Комітет ICOM з підвищення стійкості музеїв до надзвичайних ситуацій (ICOM- DRMC)
+        logo: null
+        url: null
+      - title: Загальноєвропейська федерація асоціацій із захисту культурної спадщини «Europa Nostra»
+        logo: null
+        url: null
+      - title: Heritage for Peace (Нідерланди–Сирія)
+        logo: null
+        url: null
+      - title: Фонд Принца Клауса (Нідерланди)
+        logo: null
+        url: null
+      - title: Смітсонівська ініціатива з порятунку культури (SCRI)
+        logo: null
+        url: null
+      - title: Фонд охорони культури Британської Ради
+        logo: null
+        url: null
+      - title: Департамент цифрових технологій, культури, медіа та спорту (Велика Британія)
+        logo: null
+        url: null
+      - title: Фонд Ґерди Хенкель (Дюссельдорф, Німеччина)
+        logo: null
+        url: null
+      - title: Whiting Foundation (Нью-Йорк, США)
+        logo: null
+        url: null
+      - title: Фонд ALIPH (Швейцарія)
+        logo: null
+        url: null
+      - title: Асоціація з реагування на загрози культурній спадщині – CHIEF (Італія)
+        logo: null
+        url: null
+      - title: Польський інститут у Києві
+        logo: null
+        url: null
+      - title: Ukraine Emergency Cultural Heritage Rescue Initiative (США, Канада)
+        logo: null
+        url: null
+      - title: ICOMOS Canada
+        logo: null
+        url: null
+      - title: Логістичний центр «HUB SOS-UA» (Млини, Польща)
+        logo: null
+        url: null
+      - title: Світовий фонд пам’яток (World Monument Fund, WMF)
+        logo: null
+        url: null
+      - title: Фонд світової спадщини (Global Heritage Fund)
+        logo: null
+        url: null
+      - title: Музей мистецтв Метрополітен (The Metropolitan Museum of Art)
+        logo: null
+        url: null

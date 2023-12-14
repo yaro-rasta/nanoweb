@@ -1,1 +1,11 @@
 $lang: en
+
+$l:
+  linkToFacebook: Facebook page
+  searchInputPlaceholder: "Search: Headquarters contacts"
+  searchInputLabel: Site search
+  searchBtn: Search
+  hotline: Hotline
+  hotlineText: consultations, assistance, reporting an emergency
+  supportBtn: Support
+  registerOfAttackedHeritageBtn: Register of Attacked Heritage

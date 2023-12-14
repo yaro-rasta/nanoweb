@@ -1,0 +1,36 @@
+$refer: /команда.html
+
+title: Equipo – Cuartel General de Rescate del Patrimonio
+heading1: Equipo
+content: También participa en el trabajo el <a href="https://www.heritage.in.ua/" target="_blank">equipo de HEMO</a>, profesionales de museos, expertos, voluntarios en diversas áreas – desde comunicación y consultoría hasta la descarga de vagones y camiones.
+
+team:
+  - image: /img/team/Ihor-Poshivailo.jpg
+    name: "Ігор Пошивайло"
+    text: "coordinador de la Sede (Kiev), proporcionando ayuda de socios extranjeros, evaluación de necesidades, pérdidas y riesgos, conexiones con instituciones internacionales, organizaciones, donantes, medios de comunicación, proyectos metodológicos para profesionales de museos, expediciones de campo, programas educativos, procesos de musealización"
+    url: "https://www.facebook.com/ihor.poshyvailo"
+
+  - image: /img/team/Dmitro-Tsvitnenko.jpg
+    name: "Дмитро Цвітненко"
+    text: "director de la Agencia de Resiliencia Cultural (ACURE), apoyo legal"
+    url: "https://www.facebook.com/dmytro.tsvitnenko"
+
+  - image: /img/team/Olha-Salo.jpg
+    name: "Ольга Сало"
+    text: "satisfacción de las necesidades de los museos, logística, formación de una red de respuesta rápida, proyectos editoriales, coordinadora de almacén en Kiev"
+    url: "https://www.facebook.com/olha.salo"
+
+  - image: /img/team/Bohdan-Poshivailo.jpg
+    name: "Богдан Пошивайло"
+    text: "documentación fotográfica y videográfica"
+    url: "https://www.facebook.com/bohdan.poshyvailo"
+
+  - image: /img/team/Kseniia-Dvornikova.jpg
+    name: "Ксенія Дворнікова"
+    text: "relaciones con los medios, relaciones públicas"
+    url: "https://www.facebook.com/ksdvornikova"
+
+  - image: /img/team/Karina-Hritsenko.jpg
+    name: "Карина Гриценко"
+    text: "apoyo contable"
+    url: null

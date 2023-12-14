@@ -1,0 +1,156 @@
+$refer: /партнери.html
+
+title: Partnership development – Штаб порятунку спадщини
+heading1: Partnership development
+content: |
+    <p>Systematic cooperation with other volunteer initiatives and organisations, primarily with those aimed at helping cultural institutions and responding to cultural heritage preservation challenges, contributes to a better analysis of the situation in terms of immediate threats and needs, targeted provision of assistance and minimisation of transportation expenses.</p>
+    <p>The main areas of cooperation: exchange of information with international organizations, cultural institutions and cultural heritage experts regarding the situation and current threats and needs, coordination of material and equipment supplies to cultural institutions, in particular in identifying necessary materials and their delivery, offering expert consultations. Another area of cooperation is organisation of expeditions to document damages and losses to cultural heritage objects and sites, preparation for early recovery and reconstruction, promotion of Ukrainian culture and advocacy for aid.</p>
+    <p>Since its establishment, HERI has been cooperating with the following authorities, institutions, organisations, and initiatives.</p>
+
+partners:
+  - group: Ukrainian partners
+    list:
+      - title: Ministry of Culture and Information Policy of Ukraine
+        logo: /img/partners/mcip.gov.ua.svg
+        url: https://mcip.gov.ua/
+      - title: Ukrainian Institute of National Remembrance
+        logo: https://uinp.gov.ua/storage/app/public/images/1/image/1/max/WtdB01537714749IzC1e.png
+        url: https://uinp.gov.ua/
+      - title: Cultural Heritage Rescue Centre (Lviv)
+        logo: https://scontent.flwo3-1.fna.fbcdn.net/v/t39.30808-1/321251056_8496773023698358_2271139051579729411_n.jpg?stp=dst-jpg_s480x480&_nc_cat=105&ccb=1-7&_nc_sid=596444&_nc_ohc=3nFXFdUgT3sAX8G8lid&_nc_ht=scontent.flwo3-1.fna&oh=00_AfB0CD5svvBTOJDHI4saCbIOL-oTgRQBuov3qHZ8lzh21g&oe=65800AB8
+        url: https://www.facebook.com/profile.php?id=100081325312579&locale=vi_VN
+      - title: Museum Crisis Centre (Lviv)
+        logo: https://scontent.flwo3-1.fna.fbcdn.net/v/t39.30808-1/275446876_105882615392584_8753925617474549901_n.jpg?stp=dst-jpg_p480x480&_nc_cat=104&ccb=1-7&_nc_sid=596444&_nc_ohc=T3EsSXbxz_0AX_2Szmk&_nc_ht=scontent.flwo3-1.fna&oh=00_AfA5KIO9QFwCY9wTMQ36xLBscBdwiJBxdT7Os8w3vMDk0g&oe=658065AF
+        url: https://www.facebook.com/p/%D0%9C%D1%83%D0%B7%D0%B5%D0%B9%D0%BD%D0%B8%D0%B9-%D0%BA%D1%80%D0%B8%D0%B7%D0%BE%D0%B2%D0%B8%D0%B9-%D1%86%D0%B5%D0%BD%D1%82%D1%80Museum-Crisis-Center-100083180718086/?paipv=0&eav=AfZH3UWq1U4fC4t9l_5Su1376Azz_DFN7AeL745h3GbFy1CBEqV3mDyScJ_zk2pfxAg&_rdr
+      - title: Western Ukrainian Union of Museums
+        logo: https://scontent.flwo3-1.fna.fbcdn.net/v/t39.30808-1/307449212_466399392180233_6366662668357579351_n.jpg?stp=dst-jpg_p480x480&_nc_cat=102&ccb=1-7&_nc_sid=596444&_nc_ohc=2Jl76XtPXPQAX_w3K-_&_nc_ht=scontent.flwo3-1.fna&oh=00_AfCMiPP6FUGAFYG82xYc0w57CoJL8eYawrXN4j20Tub-HQ&oe=657FCB9F
+        url: https://www.facebook.com/lvivskyjlycar/?locale=uk_UA
+      - title: "Lvivsky Lytsar (Lviv Knight) Volunteer Initiative"
+        logo: https://heritage.lviv.ua/wp-content/themes/galychyna/images/logo.png
+        url: https://heritage.lviv.ua/
+      - title: Ukrainian Association of Protection of Historical and Cultural Monuments
+        logo: null
+        url: null
+      - title: Ukrainian Committee of ІСОМ
+        logo: null
+        url: null
+      - title: Ukrainian Committee of ІСОМОS
+        logo: null
+        url: null
+      - title: Ukrainian coordinator of ICCROM
+        logo: null
+        url: null
+      - title: Ukrainian Fulbright Circle
+        logo: null
+        url: null
+      - title: Ukrainian Centre for Museum Development
+        logo: null
+        url: null
+      - title: The State Museum of Natural History at the National Academy of Sciences of Ukraine
+        logo: null
+        url: null
+      - title: National Centre of Folk Culture “Ivan Honchar Museum”
+        logo: null
+        url: null
+      - title: Leonid Marushchak – individual initiative to help museums of Eastern and Southern Ukraine
+        logo: null
+        url: null
+      - title: NGO “People’s self-defense of Lviv region”
+        logo: null
+        url: null
+      - title: Volunteer headquarters of the Student Brotherhood of Lviv Region
+        logo: null
+        url: null
+      - title: “Mizh Vukhamy (Between the Ears) creative agency”
+        logo: null
+        url: null
+      - title: Public Health Alliance
+        logo: null
+        url: null
+      - title: NGO “Union of ATO Participants and Volunteers”
+        logo: null
+        url: null
+      - title: Stepan Zakharkin and the volunteer community he represents
+        logo: null
+        url: null
+      - title: Transportation company “Sarmat”
+        logo: null
+        url: null
+      - title: Institute of Geo-Informational Systems
+        logo: null
+        url: null
+      - title: Department of Architecture and Restoration of Lviv Polytechnic National University
+        logo: null
+        url: null
+      - title: Skeiron company – digitisation of cultural heritage
+        logo: null
+        url: null
+
+  - group: Foreign partners
+    list:
+      - title: United Nations Educational, Scientific and Cultural Organisation (UNESCO)
+        logo: null
+        url: null
+      - title: International Centre for Research, Preservation and Restoration of Cultural Values (ICCROM)
+        logo: null
+        url: null
+      - title: International Council of Museums (ICOM)
+        logo: null
+        url: null
+      - title: International Council of Monuments and Sites (ISOMOS)
+        logo: null
+        url: null
+      - title: ICOM Disaster Risk Management Committee (ICOM-DRMC)
+        logo: null
+        url: null
+      - title: Pan-European Federation of Associations for the Protection of Cultural Heritage – Europa Nostra
+        logo: null
+        url: null
+      - title: Heritage for Peace (the Netherlands – Syria)
+        logo: null
+        url: null
+      - title: Prince Claus Fund (the Netherlands)
+        logo: null
+        url: null
+      - title: Cultural Emergency Response
+        logo: null
+        url: null
+      - title: Smithsonian Cultural Rescue Initiative (SCRI)
+        logo: null
+        url: null
+      - title: Cultural Protection Fund of the British Council
+        logo: null
+        url: null
+      - title: Department for Digital, Culture, Media and Sport (United Kingdom)
+        logo: null
+        url: null
+      - title: Gerda Henkel Foundation (Dusseldorf, Germany)
+        logo: null
+        url: null
+      - title: Whiting Foundation (New York, USA)
+        logo: null
+        url: null
+      - title: ALIPH Foundation (Switzerland)
+        logo: null
+        url: null
+      - title: CHIEF Association (Italy)
+        logo: null
+        url: null
+      - title: Polish Institute in Kyiv
+        logo: null
+        url: null
+      - title: Ukraine Emergency Cultural Heritage Rescue Initiative (USA, Canada)
+        logo: null
+        url: null
+      - title: Logistic Centre HUB SOS-UA (Mlyny, Poland)
+        logo: null
+        url: null
+      - title: World Monument Fund (USA)
+        logo: null
+        url: null
+      - title: Global Heritage Fund (USA)
+        logo: null
+        url: null
+      - title: The Metropolitan Museum of Art
+        logo: null
+        url: null

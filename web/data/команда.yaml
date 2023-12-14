@@ -1,0 +1,36 @@
+$template: /команда
+
+title: Команда – Штаб порятунку спадщини
+heading1: Команда
+content: Також до роботи долучається <a href="https://www.heritage.in.ua/" target="_blank">команда HEMO</a>, музейники, експерти, волонтери в різних напрямах – від комунікації та консультацій до розвантаження вагонів і фур.
+
+team:
+  - image: /img/team/Ihor-Poshivailo.jpg
+    name: "Ігор Пошивайло"
+    text: "координатор Штабу (Київ), забезпечення допомоги від закордонних партнерів, оцінювання потреб, утрат і ризиків, зв’язки з міжнародними інституціями, організаціями, донорами, ЗМІ, методичні проєкти для музейників, польові експедиції, навчальні програми, процеси музеєфікації"
+    url: "https://www.facebook.com/ihor.poshyvailo"
+
+  - image: /img/team/Dmitro-Tsvitnenko.jpg
+    name: "Дмитро Цвітненко"
+    text: "голова Агенції стійкості культури (ACURE), юридичний супровід"
+    url: "https://www.facebook.com/dmytro.tsvitnenko"
+
+  - image: /img/team/Olha-Salo.jpg
+    name: "Ольга Сало"
+    text: "забезпечення потреб музеїв, логістика, формування мережі оперативного реагування, видавничі проєкти, координатор складу в Києві"
+    url: "https://www.facebook.com/olha.salo"
+
+  - image: /img/team/Bohdan-Poshivailo.jpg
+    name: "Богдан Пошивайло"
+    text: "фото та відеодокументування"
+    url: "https://www.facebook.com/bohdan.poshyvailo"
+
+  - image: /img/team/Kseniia-Dvornikova.jpg
+    name: "Ксенія Дворнікова"
+    text: "робота зі ЗМІ, зв’язки з громадськістю"
+    url: "https://www.facebook.com/ksdvornikova"
+
+  - image: /img/team/Karina-Hritsenko.jpg
+    name: "Карина Гриценко"
+    text: "бухгалтерський супровід"
+    url: null

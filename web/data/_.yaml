@@ -6,3 +6,14 @@ $social:
     url: https://www.facebook.com/HERI.Ukraine
   - title: Youtube
     url: https://www.youtube.com/channel/UCqiHIOJ9MRSCafElFLAGlEg
+
+
+$l:
+  linkToFacebook: Сторінка у Facebook
+  searchInputPlaceholder: "Шукати: Контакти штабу"
+  searchInputLabel: Пошук по сайту
+  searchBtn: Шукати
+  hotline: Гаряча лінія
+  hotlineText: консультації, допомога, інформування про надзвичайну подію
+  supportBtn: Підтримати
+  registerOfAttackedHeritageBtn: Реєстр атакованої спадщини
