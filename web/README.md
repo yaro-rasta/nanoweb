@@ -2,6 +2,24 @@
 
 ## Templates
 
+## Installation
+
+1. Open the terminal.
+1. Change directory to repository `./web`.
+1. Install all dependencies by running `npm install` (npm and node [must be installed](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) already).
+1. To run a local server use a command `npm run start`.
+1. Open a web browser with the url [localhost:3000](http://localhost:3000).
+1. When adding changes commit and push to your repository to have a database of the website in your respository.
+1. Setting up a server for receiving changes:
+    1. Upload to the server (in the web root foder, in most cases `public_html`, `www`, `{domain}`, etc.) files from the `./remote` directive.
+    1. Change the server file `./config.php` and set the proper `AUTH_KEY` which is the same, you store in `.env`
+1. Setting up a localhost for publishing changes, create the `./env` file and add the data in it:
+    ```env
+    AUTH_KEY={YOUR_AUTH_KEY}
+    API_URL=https://{YOUR_DOMAIN}/deploy.php
+    ```
+1. To upload changes to your server run the command `npm run publish`.
+
 ## Localization
 
 Define a default language in the very beginning, otherwise you need to move a lot of data between folders when changing a default language.

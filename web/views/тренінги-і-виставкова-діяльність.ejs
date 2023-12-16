@@ -1,0 +1,67 @@
+<%
+const heading1Sure = 'undefined' === typeof heading1 ? title : heading1;
+const news = all['тренінги'] || [];
+news.sort((a, b) => {
+    // Convert date strings to Date objects for comparison
+    const dateA = new Date(a.date.replace(' ', 'T'));
+    const dateB = new Date(b.date.replace(' ', 'T'));
+
+    // For descending order, if dateA is less than dateB, we return 1, else -1
+    return dateA < dateB ? 1 : -1;
+});
+
+%>
+<%- include('/_/head'); %>
+
+<body>
+    <%- include('/_/header'); %>
+    <section class="container">
+        <%- include('/_/nav'); %>
+    </section>
+
+    <section class="container">
+        <h1 class="text-center text-uppercase">
+            <%= heading1Sure %>
+        </h1>
+    </section>
+
+    <section class="container">
+        <div class="d-flex flex-wrap gap-3">
+            <% if ('undefined' !== typeof contentImg) { %>
+                <figure class="content-img">
+                    <img class="w-100" src="<%= contentImg %>" alt="<%= heading1Sure %>">
+                </figure>
+            <%} %>
+            <% if ('undefined' !== typeof content) { %>
+            <div class="content-text">
+                <%- content %>
+            </div>
+            <% } %>
+        </div>
+    </section>
+
+    <section class="container my-5">
+        <% if (Array.isArray(news)) news.forEach(article => { %>
+            <article class="d-flex flex-wrap gap-3">
+                <% if (article['contentImg']) { %>
+                <figure class="news-img">
+                    <img class="w-100" src="<%= article.contentImg %>" alt="<%= article['heading1'] || article['title'] %>">
+                </figure>
+                <% } %>
+                <div class="news-short">
+                    <h2><%= article['heading1'] || article['title'] %></h2>
+                    <p><span class="badge bg-warning fs-5"><%= article.category %></span></p>
+                    <p><%= article['excerpt'] || "" %></p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span><%= article['date'] || "" %></span>
+                        <a href="<%= article['$uri'] %>" class="btn btn-outline-primary">читати більше &rsaquo;</a>
+                    </div>
+                </div>
+            </article>
+        <% }) %>
+    </section>
+
+    <%- include('/_/footer'); %>
+</body>
+
+<%- include('/_/foot'); %>

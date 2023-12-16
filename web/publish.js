@@ -141,12 +141,16 @@ async function deleteFiles(files) {
 async function publish() {
     const { filesToUpdate, filesToRemove } = await getFilesToUpdate();
 
+    console.log('');
+    console.log('Zipping an update');
     const toUpdate = [];
     for (const file of filesToUpdate) {
-        const localFilePath = `${DIST_DIR}/${file.path}`; // Replace with the actual local directory path
+        const localFilePath = `${DIST_DIR}/${file.path}`;
         const localFileHash = calculateFileHash(localFilePath);
+        const stats = fs.statSync(localFilePath);
         if (localFileHash !== file.hash) {
             toUpdate.push(file);
+            console.log(`> ${file.path}`);
         }
     }
 
