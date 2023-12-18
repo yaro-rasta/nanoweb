@@ -13,7 +13,7 @@ async function renderAllFiles() {
     const yamlFiles = findAllFiles(DATA_DIR, /\.yaml$/, /\/_|\/_\.yaml$/);
 
     for (const file of yamlFiles) {
-        const uri = file.replace(DATA_DIR, '').replace('.yaml', '.html');
+        const uri = file.replace(DATA_DIR, '').replace('.yaml', '.html').replace('\\', '/');
         try {
             const html = await renderUri(uri, DATA_DIR, VIEWS_DIR, true);
             const outputFilePath = path.join(DIST_DIR, uri);
