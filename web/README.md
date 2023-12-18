@@ -7,6 +7,7 @@
 1. Open the terminal.
 1. Change directory to repository `./web`.
 1. Install all dependencies by running `npm install` (npm and node [must be installed](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) already).
+1. Install `sass` globally `npm install -g sass`, more details on [Sass page](https://sass-lang.com/install/).
 1. To run a local server use a command `npm run start`.
 1. Open a web browser with the url [localhost:3000](http://localhost:3000).
 1. When adding changes commit and push to your repository to have a database of the website in your respository.
