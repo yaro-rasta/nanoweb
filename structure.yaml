@@ -1,8 +1,52 @@
 # Structure of the project
 # Objects
 objects:
-
-# 
+  coreAttrs:
+    # layout for the web•presentation
+    $layout: 'string'
+    # reference to the data in original language
+    $refer: 'string'
+    # redirect to another resource
+    $redirect: 'string'
+    # object's hidden option, if true object is not rendered, default is undefined (false)
+    $hidden: 'boolean'
+    # theme name for web•presentation
+    $theme: 'string'
+  accessAttrs:
+    $public: 'object'
+  nwImageType: 'string | { src: "string", name: "string" } | [ "nwImageType" ]'
+  # Nano type includes the object YAML representation of the HTML document DOM,
+  # where is key a tag name or attribute name if starts with $ (dollar sign)
+  # { $target: '_blank', $href: 'https://yaro.page/nanoweb', a: 'Nanoweb website' }
+  nwNanoType: 'string | [ nwNanoType ] | { "any": "any" }
+  nwCategoryType: 'string | { title: "string", options: { "any": "any" } }'
+  nwFileType: 'string | { src: "string", name: "string", files: [ "nwFileType" ], "any": "any" }'
+  post:
+    # standard object is the page that has web•representation
+    **coreAttrs
+    **accessAttrs
+    # this title is used for the meta tag usually, not the HTML view.
+    title: 'string'
+    # this desc is used for the meta tag usually, not the HTML view.
+    desc: 'string'
+    image: 'string'
+    # automatically generated if gallery.ogThumb is defined
+    ogImage: 'string'
+    page:
+      date: 'string'
+      category: 'nwCategoryType'
+      # the options of gallery.thumb are applicable for the image
+      image: 'nwImageType'
+      title: 'string'
+      # this page.desc is used as presentation of description in HTML view
+      desc: 'nwNanoType'
+      content: 'nwNanoType'
+    files: '[ "nwFileType" ]'
+# Thumbnails
+thumbnails:
+  web/data/uk/news/2022/02/24/20220224-Prodigy-Invanders-Must-Die.jpg
+  # automatically converts post and gallery images into smaller and optimized image if gallery.thumb provided
+  web/public/thumbs/uk/news/2022/02/24/20220224-Prodigy-Invanders-Must-Die@9-6-h300px-q81.webp
 # Files
 files:
   legacy/
@@ -23,7 +67,19 @@ files:
          2022/
            02/
              24/
-               20220224-Prodigy-invanders-must-die.yaml
+               # store object data files under the same name with different extensions
+               20220224-Prodigy-Invanders-Must-Die.yaml
+               20220224-Prodigy-Invanders-Must-Die.txt
+               20220224-Prodigy-Invanders-Must-Die.jpg
+               20220224-Prodigy-Invanders-Must-Die.icon.jpg
+               # or store object in the separate directory
+               # remember to link files properly
+               # only .yaml files are loaded automatically by the web processor
+               20220224-Prodigy-invanders-must-die/
+                 index.yaml
+                 vers.txt
+                 cover.jpg
+                 icon.jpg
           # if you have few posts in this category (news) you can deduct the depth to store 
           2023/
             20230101-Unhappy-new-year.yaml
