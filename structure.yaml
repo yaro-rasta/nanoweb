@@ -1,0 +1,56 @@
+# Structure of the project
+# Objects
+objects:
+
+# 
+# Files
+files:
+  legacy/
+    collect.py
+    collect.rules.yaml
+  web/
+    # source data storage in diffenent file formats, main is .yaml, keep data stored as minimum as possible
+    data/
+      # the top level directory of the data is the language code: en, en-US, en-GB, uk, uk-UA.
+      # also _ (underscore) is as a global data objects, such as social links, navigation (in basic language), analytics and pixels, etc.
+      # also possible to have legacy/ with the specific data coming from the legacy in a manual procedure
+      # also editor/ is for nan•web editor data
+      editor/
+      en/
+      uk/
+       news/
+         # stucture news or other publications by year / month / day
+         2022/
+           02/
+             24/
+               20220224-Prodigy-invanders-must-die.yaml
+          # if you have few posts in this category (news) you can deduct the depth to store 
+          2023/
+            20230101-Unhappy-new-year.yaml
+        # configuration for the whole uk/ Ukrainian directory
+        _.yaml
+        # Index publication data.
+        index.yaml
+    src/
+    public/
+      css/
+      js/
+      img/
+    views/
+    # store the themes with views
+    themes/
+      guru/
+        views/
+      media/
+        views/
+      yaro/
+        views/
+    .env
+    # copy collected legacy files
+    copy-legacy.js
+    # publish current version to the server that defined in .env
+    publish.js
+    # render current version, including search indecies and image thumbnails
+    render.js
+    # start the server to browse the current version of the web•presentation of data
+    server.js
