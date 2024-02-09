@@ -1,0 +1,28 @@
+# Process of maintaining and presenting data
+- read data by URI /en/goods/logic/rules.html
+- extract nwDataUri = /en/goods/logic/rules
+- title: load settings for all the top diorectories
+  process:  
+    - detect directories
+    - dirs:
+      - /
+      - /en
+      - /en/goods
+      - /en/goods/logic
+      - /en/goods/logic/rules
+    - detect directory settings to load before the file.
+    - files:
+      - /_.yaml
+      - /en/_.yaml
+      - /en/goods/_.yaml
+      - /en/goods/logic/_.yaml
+      - /en/goods/logic/rules/_.yaml
+    - read all the existing files into the object
+    - settings:
+      - fn: loadData(files)
+    - read the URI file data
+    - file: /en/goods/logic/rules.yaml
+    - data: settings + loadData(file)
+    - data is loaded, render the data according to the data render options ($hidden, $theme, $layout, $redirect)
+    - html:
+      - fn: render(data)
