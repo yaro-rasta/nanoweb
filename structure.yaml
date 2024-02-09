@@ -5,15 +5,23 @@ objects:
     # layout for the web•presentation
     $layout: 'string'
     # reference to the data in original language
-    $refer: 'string'
+    $refer: 'nwDataUri'
     # redirect to another resource
     $redirect: 'string'
     # object's hidden option, if true object is not rendered, default is undefined (false)
     $hidden: 'boolean'
     # theme name for web•presentation
     $theme: 'string'
+    # extend the data file
+    $extend: 'nwDataUri'
+    # define the goods connected to the page
+    $catalog: 'string'
   accessAttrs:
     $public: 'object'
+  # the path to data file inside ./data/, for example: 
+  # file: ./data/uk/about/me.yaml, nwDataUri: /uk/about/me
+  # file: ./data/uk/about/index.yaml, nwDataUri: /uk/about/ | /uk/about/index
+  nwDataUri: 'string > URL.pathname'
   nwImageType: 'string | { src: "string", name: "string" } | [ "nwImageType" ]'
   # Nano type includes the object YAML representation of the HTML document DOM,
   # where is key a tag name or attribute name if starts with $ (dollar sign)
