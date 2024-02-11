@@ -1,7 +1,21 @@
 # Process of maintaining and presenting data
+- handle the request from the client
+- read: URI
 - read data by URI /en/goods/logic/rules.html
+- expected result rendered in HTML
+- html:
+    uri: /en/goods/logic/rules.html
+    head:
+      title: Rules
+      icon: /en/goods/logic/rules.jpg
+    body:
+      img: /en/goods/logic/rules@.webp[jpg]
+      thumb: /en/goods/logic/rules@1-1-h420px-north.jpg
+      figure:
+        figcaption: private data
+        img: /en/goods/logic/rules.jpg
 - extract nwDataUri = /en/goods/logic/rules
-- title: load settings for all the top diorectories
+- title: load settings for all the directories to the root
   process:  
     - detect directories
     - dirs:
@@ -19,10 +33,14 @@
       - /en/goods/logic/rules/_.yaml
     - read all the existing files into the object
     - settings:
-      - fn: loadData(files)
+      - fn: 
+        - loadData(files)
+        - every file stores its data separately in the cache cache[file] = data
+        - handle $extend, $extendFull, $refer (to add to alternates) properties
+        - handle import(*nwDataUri) values
     - read the URI file data
     - file: /en/goods/logic/rules.yaml
     - data: settings + loadData(file)
     - data is loaded, render the data according to the data render options ($hidden, $theme, $layout, $redirect)
-    - html:
-      - fn: render(data)
+    - render the data based on the options $theme, $layout, $rendering, $hidden, $redirect, $engine, $private
+    - fn: render(data)
