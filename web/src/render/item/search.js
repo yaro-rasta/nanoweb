@@ -33,10 +33,6 @@ function fromNano(nano, divider = ' ') {
   return result.join(divider);
 }
 
-function saveMeta() {
-  
-}
-
 function extract(item) {
   let image = '';
   const keys = runtime['SEARCH_IMAGE_KEYS'] || ['ogImage', 'image', 'thumb'];
