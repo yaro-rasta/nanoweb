@@ -18,9 +18,7 @@ function fromNano(nano, divider = ' ') {
   if (typeof nano === 'string') {
     result.push(nano);
   } else if (Array.isArray(nano)) {
-    nano.forEach(element => {
-      result.push(fromNano(element, divider));
-    });
+    nano.forEach(element => result.push(fromNano(element, divider)));
   } else if (typeof nano === 'object') {
     Object.keys(nano).forEach(key => {
       if (!key.startsWith('$')) {
@@ -50,11 +48,11 @@ function search(item, i, len) {
   const file = path.join(runtime['STATIC_DIR'], `${lang}.txt`);
 
   if (typeof fps[file] === 'undefined') {
-    fps[file] = fs.openSync(file, 'a'); // Open file for appending
+    fps[file] = fs.openSync(file, 'w'); // Open file for appending
   }
   
   const index = extract(item);
-  fs.writeSync(fps[file], index + "\n"); // Append newline for each entry
+  fs.writeSync(fps[file], index + "\n\n"); // Append newline for each entry
 
   if (len - 1 === i) {
     close(); // Close all file descriptors
