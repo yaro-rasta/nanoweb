@@ -45,7 +45,7 @@ function extract(item) {
 
 function search(item, i, len) {
   const lang = getLanguage(item['$uri']);
-  const file = path.join(runtime['STATIC_DIR'], `${lang}.txt`);
+  const file = path.join(runtime['STATIC_DIR'], 'search', `${lang}.txt`);
 
   if (typeof fps[file] === 'undefined') {
     fps[file] = fs.openSync(file, 'w'); // Open file for appending
