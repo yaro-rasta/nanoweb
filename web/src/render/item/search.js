@@ -58,7 +58,7 @@ function search(item, i, len) {
   const file = path.join(runtime['STATIC_DIR'], 'search', `${lang}.txt`);
 
   if (typeof fps[file] === 'undefined') {
-    fps[file] = fs.openSync(file, 'w'); // Open file for appending
+    fps[file] = fs.openSync(file, 'w'); // Open file
   }
   
   const index = extract(item);
