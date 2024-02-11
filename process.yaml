@@ -39,13 +39,35 @@
       - fn: render(data)
 
 - renders:
-  - item:
+  - config.yaml:
+    # define the order and enabled renders, comment to disable
+    - item/:  
+      - redirects # redirects are used for new websites on nan•web copied from the legacy
+      # - redirectsHtaccess
+      - search
+      - html
+    - html/:
+      - emails
+      - scripts
+      - styles
+      # - minify
+    - all/:
+      
+  - item/: # ./src/render/item/redirects.js
     - fn: redirects(item) => { key: 'item', output: 'item' }
-    - fn: redirectsHtaccess(item) => { key: 'htaccess', output: 'string' }
-    - fn: search(item) => { key: 'search', output: 'string' }
-    - fn: html(item) => { key: 'html', output: 'string' }
-  - html:
+    - fn: redirectsHtaccess(item) => { key: 'htaccess', output: 'string', join: "\n" }
+    - fn: search(item) => { key: 'search', output: 'string', join: "\n\n", file: null, save: () => 'file' }
+    - fn: html(item) => { key: 'html', output: 'string', join: '', file: `${uri}.html`, save: () => 'file' } }
+  - html/:
+    # ./src/render/html/emails.js
     - fn: emails(html)
+    # ./src/render/html/scripts.js
     - fn: scripts(html)
+    # ./src/render/html/styles.js
     - fn: styles(html)
+    # ./src/render/html/minify.js
     - fn: minify(html)
+  - search/:
+    - fn: 
+  - all:
+    - 
