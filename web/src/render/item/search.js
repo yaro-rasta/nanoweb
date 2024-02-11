@@ -2,8 +2,10 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { runtime } = require('../../runtime');
 const { getLanguage } = require('../../data');
+const { thumbSrc } = require('../../static');
 
 const fps = {};
+const blocks = {};
 
 function close() {
   Object.keys(fps).forEach(file => {
@@ -30,10 +32,18 @@ function fromNano(nano, divider = ' ') {
 }
 
 function extract(item) {
+  let image = '';
+  const keys = runtime['SEARCH_IMAGE_KEYS'] || ['ogImage', 'image', 'thumb'];
+  for (const key of keys) {
+    if (item[key]) {
+      image = runtime['SEARCH_INDEX_GALLERY'] ? thumbSrc(item[key], runtime['SEARCH_INDEX_GALLERY']) : item[key];
+      break;
+    }
+  }
   return [
     JSON.stringify(item['$uri']),
     JSON.stringify(item['title']),
-    JSON.stringify(item['ogImage'] || item['thumb'] || item['image']),
+    JSON.stringify(image),
     JSON.stringify(item['desc'] || ''),
     JSON.stringify([
       fromNano(item['page']?.['content']),
@@ -52,7 +62,7 @@ function search(item, i, len) {
   }
   
   const index = extract(item);
-  fs.writeSync(fps[file], index + "\n\n"); // Append newline for each entry
+  fs.writeSync(fps[file], index + runtime['SEARCH_INDEX_DIVIDER'] || "\n\n"); // Append newline for each entry
 
   if (len - 1 === i) {
     close(); // Close all file descriptors
