@@ -43,21 +43,23 @@
     # define the order and enabled renders, comment to disable
     - item/:  
       - redirects # redirects are used for new websites on nan•web copied from the legacy
-      # - redirectsHtaccess
       - search
       - html
     - html/:
       - emails
       - scripts
       - styles
+      - sitemapXML
       # - minify
     - all/:
+      - htaccess
+      - robotsTXT
       
   - item/: # ./src/render/item/redirects.js
     - fn: redirects(item) => { key: 'item', output: 'item' }
-    - fn: htaccess(item) => { key: 'htaccess', output: 'string', join: "\n" }
     - fn: search(item) => { key: 'search', output: 'string', join: "\n\n", file: null, save: () => 'file' }
     - fn: html(item) => { key: 'html', output: 'string', join: '', file: `${uri}.html`, save: () => 'file' } }
+    - fn: sitemapXML(item)
   - html/:
     # ./src/render/html/emails.js
     - fn: emails(html)
@@ -70,4 +72,5 @@
   - search/:
     - fn: 
   - all:
-    - 
+    - fn: htaccess(items) => { output: 'string', file: 'file' }
+    - fn: robotsTXT(items) => { output: 'string', file: 'file' }
