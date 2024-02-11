@@ -40,7 +40,56 @@
         - handle import(*nwDataUri) values
     - read the URI file data
     - file: /en/goods/logic/rules.yaml
+    - store in cache cache[file] = data
+- title: render data
+  process:
+    - read all renders in ./src/render/item/**
+    - render with every item({...settings, ...data})
+    - render all renders in ./src/render/html/**
+    - render with every html(html)
     - data: settings + loadData(file)
     - data is loaded, render the data according to the data render options ($hidden, $theme, $layout, $redirect)
     - render the data based on the options $theme, $layout, $rendering, $hidden, $redirect, $engine, $private
     - fn: render(data)
+
+- renders:
+  - config.yaml:
+    # define the order and enabled renders, comment to disable
+    - item/:  
+      - redirects # redirects are used for new websites on nan•web copied from the legacy
+      - search
+      - html
+    - html/:
+      - emails
+      - scripts
+      - styles
+      - sitemapXML
+      # - minify
+    - all/:
+      - htaccess
+      - robotsTXT
+      
+  - item/: # ./src/render/item/redirects.js
+    - fn: |
+        redirects(item) => { key: 'item', output: 'item' }
+    - fn: |
+        search(item) => { key: 'search', output: 'string', join: "\n\n", file: null, save: () => 'file' }
+    - fn: |
+        html(item) => { key: 'html', output: 'string', join: '', file: `${uri}.html`, save: () => 'file' } }
+    - fn: sitemapXML(item)
+  - html/:
+    # ./src/render/html/emails.js
+    - fn: emails(html)
+    # ./src/render/html/scripts.js
+    - fn: scripts(html)
+    # ./src/render/html/styles.js
+    - fn: styles(html)
+    # ./src/render/html/minify.js
+    - fn: minify(html)
+  - search/:
+    - fn: 
+  - all:
+    - fn: |
+        htaccess(items) => { output: 'string', file: 'file' }
+    - fn: |
+        robotsTXT(items) => { output: 'string', file: 'file' }
