@@ -11,7 +11,7 @@ const blockSizeLimit = runtime['SEARCH_BLOCK_SIZE'] || 0;
 
 function close() {
   Object.keys(fps).forEach(file => {
-    fs.closeSync(fps[file]);
+    fs.closeSync(fps[file].fp);
     delete fps[file];
   });
 }
