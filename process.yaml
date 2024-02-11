@@ -55,7 +55,7 @@
       
   - item/: # ./src/render/item/redirects.js
     - fn: redirects(item) => { key: 'item', output: 'item' }
-    - fn: redirectsHtaccess(item) => { key: 'htaccess', output: 'string', join: "\n" }
+    - fn: htaccess(item) => { key: 'htaccess', output: 'string', join: "\n" }
     - fn: search(item) => { key: 'search', output: 'string', join: "\n\n", file: null, save: () => 'file' }
     - fn: html(item) => { key: 'html', output: 'string', join: '', file: `${uri}.html`, save: () => 'file' } }
   - html/:
