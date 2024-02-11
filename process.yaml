@@ -31,7 +31,8 @@
   process:
     - read all renders in ./src/render/item/**
     - render with every item({...settings, ...data})
-    - 
+    - render all renders in ./src/render/html/**
+    - render with every html(html)
     - data: settings + loadData(file)
     - data is loaded, render the data according to the data render options ($hidden, $theme, $layout, $redirect)
     - html:
@@ -39,8 +40,12 @@
 
 - renders:
   - item:
-    - fn: search(data)
-    - fn: template(data)
+    - fn: redirects(item) => { key: 'item', output: 'item' }
+    - fn: redirectsHtaccess(item) => { key: 'htaccess', output: 'string' }
+    - fn: search(item) => { key: 'search', output: 'string' }
+    - fn: html(item) => { key: 'html', output: 'string' }
   - html:
     - fn: emails(html)
+    - fn: scripts(html)
+    - fn: styles(html)
     - fn: minify(html)
