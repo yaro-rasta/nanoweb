@@ -31,8 +31,24 @@
               - password: [\S]{8,} # store only strong hash, should it be stored in the repository?
               - email: standard email validation.
               - phone: standard phone validation, short phones suchs (020) 1598 possible
+              - $store: access/users/${name}/user.yaml
+            - session info:
+              - id: [\w\d]{63}
+              - login: user login
+              - till: unix timestamp
+              - $store: 
+                - access/sessions/${id[0:3]}/${id[3:6]}/${id}.txt
+                - access/sessions/all.bin # store [session.till, session.id]
+            - group:
+              - name: [\w]+[\w\d\@\_\.\-]+
+              - users: array of user objects
+              - $store: access/groups/{name}.yaml
             - user access:
-              - 
+              allow:
+                uk/goods/: rwx
+                uk/goods.yaml: rwx
+            - group access:
+              
         - each page (nwDataUri) has:
           - an edit button that allows chaning all the data in that file + add new attributes and content
           - see the parent options to the root
