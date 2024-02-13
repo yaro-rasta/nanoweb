@@ -27,27 +27,40 @@
         - settings:
           - user management:
             - user info:
-              - login: [\w]+[\w\d\@\_\.\-]+
+              - login: [\w]+[\w\d\@\_\.\-]{3,33}
               - password: [\S]{8,} # store only strong hash, should it be stored in the repository?
               - email: standard email validation.
               - phone: standard phone validation, short phones suchs (020) 1598 possible
+              # the access level: 0 - admin, 1 - user
+              - access: 0
               - $store: access/users/${name}/user.yaml
             - session info:
-              - id: [\w\d]{63}
+              - id: [\w\d\]{63}
               - login: user login
               - till: unix timestamp
               - $store: 
                 - access/sessions/${id[0:3]}/${id[3:6]}/${id}.txt
                 - access/sessions/all.bin # store [session.till, session.id]
             - group:
-              - name: [\w]+[\w\d\@\_\.\-]+
+              - name: [\w]+[\w\d\@\_\.\-]{3,33}
               - users: array of user objects
               - $store: access/groups/{name}.yaml
             - user access:
-              allow:
-                uk/goods/: rwx
-                uk/goods.yaml: rwx
+              # [ nwDataUri ] | '*' | 0
+              read:  
+                *
+              # [ nwDataUri ] | '*' | 0
+              write:
+                uk/goods/
+                uk/goods.yaml
+              # [ nwDataUri ] | '*' | 0
+              delete:
+                uk/goods/
+              # [ nwDataUri ] | '*' | 0
+              # trust is required to write or delete data without approval by admin
+              trust: 0
             - group access:
+              # same as user access
               
         - each page (nwDataUri) has:
           - an edit button that allows chaning all the data in that file + add new attributes and content
