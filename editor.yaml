@@ -1,0 +1,9 @@
+- title: This document describes the minimalistic nan•web editor for those who only starts the way of learning coding own life.
+
+- goal: Manage the data in a easy way but with no less functionality as it is possbile now with vscode.
+- features:
+  - see the structure of the project:
+    - data/•• # (data and knowledge storage). Must be saved in the repository.
+    - public/•• # uploaded data assets such as images, videos, documents. It should be stored in the repository.
+    - 
+    
