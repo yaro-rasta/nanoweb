@@ -19,4 +19,18 @@
     - sitemap
     - robots.txt
     - search indecies
+- solution:  
+    server: ./server.js
+    auth: Basic | JWT with the .yaml database?
+    render:
+      - edit panel:
+        - settings:
+          - user management:
+            
+          
+        - each page (nwDataUri) has:
+          - an edit button that allows chaning all the data in that file + add new attributes and content
+          - see the parent options to the root
+
+  
   
