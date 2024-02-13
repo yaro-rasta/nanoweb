@@ -26,8 +26,13 @@
       - edit panel:
         - settings:
           - user management:
-            
-          
+            - user info:
+              - login: [\w]+[\w\d\@\_\.\-]+
+              - password: [\S]{8,} # store only strong hash, should it be stored in the repository?
+              - email: standard email validation.
+              - phone: standard phone validation, short phones suchs (020) 1598 possible
+            - user access:
+              - 
         - each page (nwDataUri) has:
           - an edit button that allows chaning all the data in that file + add new attributes and content
           - see the parent options to the root
