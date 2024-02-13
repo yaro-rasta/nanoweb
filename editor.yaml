@@ -5,5 +5,18 @@
   - see the structure of the project:
     - data/•• # (data and knowledge storage). Must be saved in the repository.
     - public/•• # uploaded data assets such as images, videos, documents. It should be stored in the repository.
-    - 
-    
+  - manage data: # both .yaml and assets 
+    - add
+    - edit (data files only)
+    - soft delete
+    - hard delete (by admin?)
+    - commit to repository (future feature?)
+    - pull the repository (future feature?)
+  - upload documents
+  - see the project status:  
+    - size
+    - count of files
+    - sitemap
+    - robots.txt
+    - search indecies
+  
