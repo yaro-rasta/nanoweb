@@ -24,7 +24,7 @@
     auth: Basic | JWT with the .yaml database?
     render:
       - edit panel:
-        - settings:
+        - settings: 
           - user management:
             - user info:
               - login: [\w]+[\w\d\@\_\.\-]{3,33}
@@ -61,7 +61,46 @@
               trust: 0
             - group access:
               # same as user access
-              
+          - data manager:
+            - data tree: simple files/dirs tree structure # according to the user access
+            - add: create data files and directories # according to the user access
+            - edit:
+              - dir settings: _.yaml per directory
+              - file settings: nwDataUri .yaml per file
+              - dir content: _.yaml per directory
+              - file content: nwDataUri .yaml per file
+              - dependencies: 
+                - when editing the content of $extend, $refer, files[$ref] take care of connected files
+                - provide easy way to upload media files
+                - when uploading files:
+                  - options:
+                      location:
+                      - file: |
+                          upload file with the same name of the data file for a single file.
+                          Good for media related to the data. 
+                          Will be stored in the repository by default with the same name but different ext.
+                      - dir: |
+                          upload files with the same name of the data file as a directory.
+                          Goood for medias related to the data that need to be stored in the repository.
+                      - public: |
+                          upload files with the same path of the data file but in public/{nwDataUri}/.
+                      - day: |
+                          upload files with public/{nwDataUri}/{year}/{month}/{day}/.
+                      - month: |
+                          upload files with public/{nwDataUri}/{year}/{month}/.
+                      - year: |
+                          upload files with public/{nwDataUri}/{year}/.
+                  - meta:
+                      src: location to the file # [ file:ext, dir:name.ext, public:name.ext, day:name.ext, month:name.ext, year:name.ext ]
+                      name: [\w\d]{1}.*
+                  - tranforms:
+                      filename: [a-Z\d]{1}[a-Z\d\.\-\_]{,99}\.[a-zA-Z\d]{2,}
+                      thumb: filename@pattern.origExt.ext
+                - provide easy way to select the existing media files from the library with the search and file manager
+            - delete:
+              - dirs
+              - files
+            
         - each page (nwDataUri) has:
           - an edit button that allows chaning all the data in that file + add new attributes and content
           - see the parent options to the root
