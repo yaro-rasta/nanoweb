@@ -1,0 +1,4 @@
+$l:
+  nwFile.src.placeholder: /uk/link/to/your/document.jpg
+  nwFile.src.label: Source URI
+  nwFile.preview.image.toggler: Preview this image ›

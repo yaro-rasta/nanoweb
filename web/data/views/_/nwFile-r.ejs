@@ -1,0 +1,17 @@
+<!-- 
+    nwFile component ∙r∙ead mode
+-->
+<div nwe="nwFile">
+    <% if (data['src']) { %>
+        <a href="<%= data['src'] %>" target="_blank">
+            <span><%= data['name'] || u.basename(data['src']) %></span>
+            <i class="icon-download"></i>
+        </a>
+    <% } else if (data['$ref']) { %>
+        <div nwe="$ref">
+            <%- include('nwFile-r', { data: t.nwFile.from(data) }) %>
+        </div>
+    <% } else { 
+        throw new Error("Component has required field: src | $ref");
+    } %>
+</div>

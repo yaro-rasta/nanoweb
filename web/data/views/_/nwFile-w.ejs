@@ -1,0 +1,23 @@
+<!-- 
+    nwFile component ∙w∙rite mode
+-->
+<div nwe="nwFile">
+    <input type="text" name="name" class="form-control" id="nwFile.name-<%= ++global['id'] %>" placeholder="<%= l(['nwFile.name.placeholder', data], $l) %>">
+    <label for="nwFile.name-<%= global['id'] %>"><%= l(['nwFile.name.label', data], $l) %></label>
+
+    <input type="text" name="src" class="form-control" readonly id="nwFile.src-<%= ++global['id'] %>" placeholder="<%= l(['nwFile.src.placeholder', data], $l) %>" nwe="nwFileUri">
+    <label for="nwFile.src-<%= global['id'] %>"><%= l(['nwFile.src.label', data], $l) %></label>
+
+    <% const id = `nwFile.preview-${++global['id']}`;
+    if (u.isImage(data['src'])) {
+        %>
+        <div>
+            <a class="btn btn-outline-secondary" data-bs-toggle="collapse" href="#<%= id %>" role="button" aria-expanded="false" aria-controls="<%= id %>>">
+                <span><%= l(['nwFile.preview.image.toggler', data], $l) %></span>
+            </a>
+            <figure class="collapse" id="<%= id %>">
+                <img src="<%= t.nwFileUri.thumb(data['src'], $['$gallery']) %>" alt="<%= data['name'] %>">
+            </figure>
+        </div>
+    <% } %>
+</div>

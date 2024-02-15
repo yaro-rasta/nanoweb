@@ -23,7 +23,7 @@
     server: ./server.js
     auth: Basic | JWT with the .yaml database?
     render:
-      - edit panel:
+      - editor panel:
         - settings: 
           - user management:
             - user info:
@@ -101,9 +101,18 @@
               - dirs
               - files
             
-        - each page (nwDataUri) has:
-          - an edit button that allows chaning all the data in that file + add new attributes and content
-          - see the parent options to the root
-
-  
+      - each page (nwDataUri) has:
+        - an edit button that allows chaning all the data in that file + add new attributes and content
+        - see the parent options to the root
+    components:
+      nwComponent:
+        type: The data type. # nwDataUri, nwFileUri, etc.
+        view: r | w # ∙r∙ead or ∙w∙rite 
+        data: object # attached data to the component
+      nwNanoComponent:
+      nwTextComponent:
+      nwFileUriComponent:
+      nwFileComponent:
+      nwFilesComponent:
+      nwDataUriComponent:
   
