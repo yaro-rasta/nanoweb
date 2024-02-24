@@ -109,10 +109,42 @@
         type: The data type. # nwDataUri, nwFileUri, etc.
         view: r | w # ∙r∙ead or ∙w∙rite 
         data: object # attached data to the component
+        all: global data scope
       nwNanoComponent:
+        r:
+          - 
+          - nano2html() => tinyMCE editor # renderEJSContent
+        w:
+          - html2nano() => .yaml file # python
       nwTextComponent:
+
       nwFileUriComponent:
       nwFileComponent:
+        read:
+          file:  
+            $type: file
+            $name: file
+            $accept: image/*,video/*,application/pdf,.doc,.docx,.zip
+            $placeholder: Choose a file
+            $label: File
+            $var: src
+          name:
+            $type: text
+            $name: name
+            $placeholder: Name the file
+            $label: Name
+            $var: name
+        view:
+          div:
+            - $href: ${data['src']}
+              a: 
+                - $class: icon-download
+                  span: ''
+                - ${data['name']}
+        write:
+          
       nwFilesComponent:
+        read:
+          - nwFileComponent
       nwDataUriComponent:
   
