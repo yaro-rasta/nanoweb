@@ -1,0 +1,216 @@
+# @todo
+# Generate a component per every Object that is not a Methond and includes Methods
+# Every component must have 2 modes: view mode is default and edit mode.
+# Components must utilize react, bootstrap 5.3
+# Every component might be a part of another component.
+# Every component might have a different edit mode: input, textearea or input[type=file] with the drag and drop area, gallery can have a list of images to select or manage, create a best component architecture you can in this case
+# Components with edit mode are those that have methods property the rese is 
+# Provide better structure for the components definition if possible
+ManageMethods:
+  - create
+  - update
+  - remove
+  - execute
+ManageChildrenMethods:
+  - createChild
+  - moveChild
+  - removeChild
+  - executeChild
+UploadFileMethods:
+  - uploadile
+  - uploadUrl
+UploadDirMethods:
+  - uploadSitemapXML
+  - uploadDirectory
+Title:
+  props:
+    this: String
+    maxLen: Number
+  methods:
+    - ...ManageMethods
+Description:
+  props:
+    this: String
+    maxLen: Number
+    rows: Number(3)
+  methods:
+    - ...ManageMethods
+Category:
+  props:
+    this: String
+    maxLen: Number(33)
+  methods:
+    - ...ManageMethods
+Tag:
+  props:
+    this: String
+    maxLen: Number(33)
+  methods:
+    - ...ManageMethods
+Uri:
+  props:
+    this: String
+    pattern: /^(?:[a-zA-Z0-9]+:\e/\//)?[a-zA-Z0-9.-\/\_\@]{2,}$/
+    minLength: 2
+    maxLength: 255
+DataDir:
+  props:
+    this: Uri
+DataUri:
+  props:
+    this: Uri
+    pattern: /\.(yaml|html)$/
+Directory:
+  props:
+    this: Array
+    child: File
+    allow: /\.(yaml)$/
+    disallow: /\.(php|phtml)$/
+  methods:
+    - ...UploadFileMethods
+    - ...UploadDirMethods
+    - ...ManageMethods
+    - ...ManageChildrenMethods
+    - chooseFromDirs
+    - download
+FileRef:
+  props:
+    this: String
+    # DataUri + ':' + 'startWithText', ex: /directory.html:1.1.
+    pattern: /^(\/|[\w]+)\.(yaml|html)\:(.+)$/
+  methods:
+    - ...ManageMethods
+File:
+  props:
+    src: DataUri
+    name: Title(len:255)
+    ref: FileRef
+  methods:
+    - ...UploadFileMethods
+    - chooseFromFiles
+    - ...ManageMethods
+Image:
+  props:
+    this: String
+    pattern: /\.(jpg|jpeg|png|gif|svg|heic|avif|webp)$/
+  methods:
+    - ...UploadFileMethods
+    - ...ManageMethods
+    - chooseFromGallery
+    - download
+    - thumbSrc
+NanoHTMLElement:
+  props:
+    this: Object
+    key:
+      - pattern: /^\$([^\s]+)$/
+        value: String
+      - value: String | NanoHTML
+NanoHTML:
+  props:
+    this: Array
+    child: NanoHTMLElement
+Page:
+  props:
+    title: Title(len:90)
+    desc: Description(len:210)
+    tags: []Tag(len:30)
+    excerpt: NanoHTML
+    content: NanoHTML
+  required:
+    - title
+
+Gallery:
+  props:
+    thumb: ThumbnailOptions
+    files: []Image
+    directory: Directory
+  required:
+    - thumb
+
+Theme:
+  props:
+    this: String
+    pattern: /^([a-zA-Z]+[\w+]){4,}$/
+  methods:
+    - getLayouts # returns all available layouts in current theme
+
+Layout:
+  props:
+    this: Uri
+  depends:
+    - theme: Theme
+  methods:
+    - onInit # retrieve the available layouts from Theme
+
+TranslationParams:
+  props:
+    this: Object
+    key:
+      - pattern: /^[\w]+$/
+        value: String
+TranslationDictionary:
+  props:
+    this: Object
+    key: 
+      - pattern: /^[\w\s\.\-\/\$]+$/
+        value: String | TranslationParams
+
+$theme: Theme
+$layout: Layout
+$catalog: DataUri
+files: []File
+directory: Directory
+page: Page
+$l: TranslationDictionary
+
+$processes:
+  - npm i nanoweb
+  - npx nanoweb create .
+  - npx nanoweb daemon
+  - update:
+    - add a website?
+    - make changes
+    - check differences
+    - commit > log
+    - publish > log
+$structure:
+  data/:
+    _.yaml: Root settings and variables. $icon and $l are mandatory.
+    locale/:
+      _.yaml: Locale settings and variables.
+      subpage:/
+        about-me.yaml: The final page.
+  plugins/:
+  static/:
+  themes/:
+    themeName/:
+      schema/:
+        _.yaml: The schema of the top level simple variables, or with the . notation of complex.
+        page.yaml: The schema of the page object.
+        person.yaml: The schema of the person object.
+        _/:
+          locale.yaml: The translation in the name of the locale for schema labels
+          uk.yaml: 
+            $catalog: Категорія
+            $catalog.placeholder: Оберіть категорію
+          en.yaml: 
+            page.title.title: Page title
+            page.desc.title: Page description
+            page.desc.desc: Used for the search engines and social sharing
+            page.content.title: Page content
+  user/:
+    nan/:
+      owe/:
+        nanoweb/:
+          .password: File with the hashed password of the user.
+          info.yaml: User info.
+          sessions.yaml: Sessions with the token as a key and info as a value of current user.
+  .gitignore:
+    user/: Ignore the user file in the repository.
+  nanoweb.config.js:
+    ROOT_DIR: The root project directory.
+    server/ssl: The ssl server option, possible values are keys as raw values or relative or absolute paths to key files as private and public.
+    # { private: 'private.key', public: 'certificate.crt' }
+    email/: The email options.
+  
